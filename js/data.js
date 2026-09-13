@@ -132,13 +132,14 @@ const coursesData = {
 
     // Uraian Refleksi PPG (Alur Refleksi Kritis)
     reflectionNarrative: {
-      meaningfulExperience: "Melalui mata kuliah ini, saya memahami bahwa pembelajaran yang bermakna dimulai dari merumuskan tujuan akhir pembelajaran (backward design) sebelum menentukan instrumen penilaian dan aktivitas kelas. Pada materi Informatika, seperti materi Algoritma dan Pemrograman, asesmen formatif berkelanjutan menjadi kunci untuk mengidentifikasi miskonsepsi logika peserta didik secara dini.",
-      artifactAnalysis: "Artefak pembelajaran yang saya hasilkan mencakup Modul Ajar Informatika Berdiferensiasi (Fase E - Berpikir Komputasional & Algoritma), Rubrik Asesmen Kinerja Proyek Pemrograman Python, serta Lembar Kerja Peserta Didik (LKPD) berbasis studi kasus kontekstual.",
-      futureAction: "Dalam praktik mengajar di masa depan, saya akan konsisten menerapkan prinsip Teaching at the Right Level (TaRL) dan memastikan setiap instrumen asesmen tidak sekadar menguji hafalan sintaksis, melainkan mengukur kemampuan pemecahan masalah (problem-solving) dan penalaran komputasional peserta didik."
+      meaningfulExperience: "Materi kuliah tentang Pembelajaran Mendalam dan Asesmen sangat relevan bagi peran calon guru. Melalui pembelajaran ini, mahasiswa tidak hanya memahami teori, tetapi juga praktik merencanakan dan mengelola asesmen. Pentingnya melakukan asesmen awal disoroti untuk mengetahui kesiapan dan kebutuhan siswa, yang membantu dalam menyusun RPP. Penerapan proses ini di kelas memungkinkan siswa terlibat lebih aktif dalam pembelajaran, menjadikan guru sebagai fasilitator yang menyesuaikan metode berdasarkan hasil asesmen. Materi ini meningkatkan kemampuan guru untuk membangun pembelajaran yang terencana dan berpusat pada siswa.",
+      challenge: "Salah satu tantangan yang dihadapi adalah perbedaan antara perencanaan pembelajaran dalam perkuliahan dan praktik di kelas. Meskipun telah belajar menyusun RPP secara sistematis, pelaksanaannya seringkali tidak sesuai rencana karena faktor seperti alokasi waktu, respons siswa, dan situasi kelas yang tidak terduga. Sebagai calon guru perlu melakukan penyesuaian, improvisasi, dan perbaikan berdasarkan kondisi aktual agar tujuan pembelajaran tetap tercapai. Pengalaman ini mengajarkan pentingnya fleksibilitas dan kemampuan mengambil keputusan cepat bagi guru dalam menghadapi realitas di lapangan.",
+      artifactAnalysis: "Konsep utama yang dipelajari calon guru adalah integrasi pembelajaran mendalam dan asesmen peserta didik berdasarkan prinsip Mindful, Meaningful, dan Joyful. Pembelajaran menggunakan pendekatan alur mundur, di mana asesmen berfungsi tidak hanya sebagai evaluasi akhir, tetapi juga sebagai alat untuk memetakan kebutuhan dan memandu perkembangan belajar. Dengan asesmen autentik dan pendekatan berdiferensiasi, materi pelajaran dihubungkan dengan konteks nyata, memicu berpikir kritis, di lingkungan kelas yang aman dan menyenangkan. Hal ini menggeser peran guru dari penyampai materi menjadi fasilitator yang merancang pengalaman belajar yang adaptif dan memberdayakan potensi peserta didik.",
+      futureAction: "Setelah mempelajari materi perkuliahan, saya ingin mengubah cara merancang dan melaksanakan pembelajaran dengan lebih memperhatikan karakteristik, kebutuhan, dan perkembangan peserta didik serta menyesuaikannya dengan perkembangan zaman. Saya ingin menjadi “Guru Gen Z” yang mampu menciptakan pembelajaran yang menyenangkan, relevan, interaktif, dan dekat dengan kehidupan peserta didik melalui pemanfaatan teknologi dan tren yang mereka kenal. Namun, mengikuti perkembangan zaman tetap harus diimbangi dengan menjaga kualitas dan kedalaman ilmu, sehingga materi akademik dapat dikemas secara menarik, sederhana, dan mudah dipahami tanpa menghilangkan tujuan pembelajaran. Dengan demikian, saya berharap dapat menjadi guru yang adaptif dan mampu membuat peserta didik memahami bahwa apa yang dipelajari memiliki kaitan dengan kehidupan mereka."
     },
     
     artifacts: [
-      { name: "Modul Ajar Berbasis UbD (Algoritma Pemrograman)", type: "PDF Document", pages: "18 Halaman" },
+      { name: "Modul Ajar Berbasis UbD (Algoritma Pemrograman)", type: "Document", pages: "18 Halaman" },
       { name: "Instrumen Asesmen Diagnostik & Formatif", type: "Rubrik Penilaian", pages: "6 Halaman" },
       { name: "Jurnal Refleksi Diri Siklus Pembelajaran", type: "Laporan Refleksi", pages: "4 Halaman" }
     ],
@@ -162,9 +163,10 @@ const coursesData = {
     summary: "Telaah kritis terhadap pemikiran Ki Hadjar Dewantara mengenai pendidikan yang memerdekakan, kodrat alam & kodrat zaman, serta internalisasi nilai-nilai luhur Pancasila dalam era transformasi digital.",
     
     reflectionNarrative: {
-      meaningfulExperience: "Mata kuliah ini merevolusi paradigma saya mengenai peran guru. Pendidik bukanlah figur yang menuntut atau mengisi botol kosong (tabula rasa), melainkan 'menuntun' segala kodrat yang ada pada anak (Sistem Among: Ing Ngarso Sung Tulodo, Ing Madyo Mangun Karso, Tut Wuri Handayani). Dalam konteks Informatika, mengintegrasikan kodrat zaman berarti membimbing peserta didik menjadi kreator teknologi yang beretika, bukan sekadar konsumen pasif.",
-      artifactAnalysis: "Artefak utama adalah infografis esai kritis 'Relevansi Filosofi Ki Hadjar Dewantara dalam Pembelajaran Informatika Abad ke-21' dan Rencana Aksi Nyata Penanaman Profil Pelajar Pancasila (terutama dimensi Bernalar Kritis & Kreatif) dalam proyek komputasi.",
-      futureAction: "Saya berkomitmen menciptakan iklim belajar yang aman, nyaman, inklusif, dan menghargai keunikan potensi setiap peserta didik tanpa membeda-bedakan latar belakang maupun kecepatan belajarnya."
+      meaningfulExperience: "Materi perkuliahan Filosofi Pendidikan dan Pendidikan Nilai memiliki keterkaitan erat dengan peran saya sebagai calon guru. Saya memahami bahwa tugas guru tidak hanya menyampaikan pengetahuan, tetapi juga menuntun peserta didik agar berkembang menjadi pribadi yang berkarakter dan berbudi pekerti. Pemikiran Ki Hajar Dewantara tentang pendidikan yang sesuai dengan kodrat alam dan kodrat zaman menyadarkan saya pentingnya memahami perkembangan peserta didik dan zaman tanpa meninggalkan nilai-nilai pendidikan. Oleh karena itu, saya perlu mempersiapkan diri menjadi guru yang tidak hanya mampu mengajar, tetapi juga mendidik, menjadi teladan, dan menuntun peserta didik agar berkembang secara utuh sesuai dengan zamannya.",
+      challenge: "Sebelum mempelajari materi ini, saya berpikir bahwa pendidikan lebih berfokus pada penyampaian materi dan pencapaian nilai sesuai standar. Setelah mempelajari pemikiran Ki Hajar Dewantara tentang kodrat alam dan kodrat zaman, Sistem Among, serta Tri Pusat Pendidikan, cara pandang saya berubah. Saya memahami bahwa pendidikan seharusnya menuntun setiap peserta didik sesuai potensi, karakteristik, dan perkembangan zamannya, sehingga guru perlu menyesuaikan pembelajaran dengan kebutuhan dan kondisi nyata peserta didik.",
+      artifactAnalysis: "Melalui mata kuliah ini, saya memahami beberapa konsep penting sebagai landasan menjadi guru, yaitu pendidikan yang menuntun peserta didik sesuai kodrat alam dan kodrat zamannya, pembelajaran yang berpihak pada kebutuhan dan karakteristik peserta didik, serta pentingnya refleksi untuk meningkatkan kualitas pembelajaran. Konsep tersebut juga berkaitan dengan mata kuliah lain, seperti Pembelajaran Mendalam dan Asesmen serta Pemahaman Peserta Didik, karena sama-sama menekankan pentingnya memahami kebutuhan peserta didik sebelum menentukan strategi dan asesmen pembelajaran.",
+      futureAction: "Setelah mempelajari Filosofi Pendidikan dan Pendidikan Nilai, saya ingin mengubah cara pandang dalam menjalankan peran sebagai guru. Saya tidak ingin melihat peserta didik hanya dari kemampuan akademik, tetapi juga memahami karakter, potensi, latar belakang, dan kebutuhan mereka. Saya ingin menjadi guru yang mampu mengikuti perkembangan zaman dan memanfaatkan teknologi untuk menciptakan pembelajaran yang relevan, namun tetap menanamkan nilai, karakter, dan budi pekerti. Saya juga ingin menerapkan pemikiran Ki Hajar Dewantara bahwa guru adalah penuntun, sehingga tidak hanya menuntut peserta didik mencapai target, tetapi juga memberikan ruang bagi mereka untuk berkembang sesuai potensi dan kebutuhannya."
     },
     
     artifacts: [
@@ -191,9 +193,10 @@ const coursesData = {
     summary: "Penerapan empat pilar Berpikir Komputasional (Dekomposisi, Pengenalan Pola, Abstraksi, dan Perancangan Algoritma) dalam penyelesaian masalah nyata lintas disiplin ilmu dan pembelajaran Informatika.",
     
     reflectionNarrative: {
-      meaningfulExperience: "Pembelajaran Computational Thinking (CT) membekali saya metode sistematis untuk membedah problem kompleks menjadi bagian-bagian yang dapat dikelola. Pengalaman paling berkesan adalah merancang aktivitas 'Unplugged CT' di mana peserta didik dapat memahami konsep algoritma pengurutan (sorting) dan pencarian (searching) melalui permainan interaktif tanpa perangkat komputer.",
-      artifactAnalysis: "Artefak yang disusun meliputi Lembar Kerja CT berbasis Soal Bebras/Tantangan Kontekstual, Modul Integrasi CT dalam Mata Pelajaran STEM, serta Panduan Pembelajaran Unplugged Coding untuk Sekolah Menengah.",
-      futureAction: "Saya akan membudayakan CT sebagai cara berpikir (mindset) fundamental bagi peserta didik, sehingga mereka terbiasa merumuskan solusi terstruktur menghadapi tantangan era kecerdasan buatan (AI)."
+      meaningfulExperience: "Computational Thinking (CT) menjadi sarana bagi saya sebagai calon guru untuk menghadapi tantangan nyata di kelas. Fondasi CT membantu menguraikan masalah rumit seperti beragamnya kemampuan siswa dan keterbatasan media menjadi langkah-langkah solutif yang sistematis dan tepat sasaran.",
+      challenge: "Mengubah pandangan awal bahwa CT bukan hanya sebatas coding, pemrograman, atau komputer. CT adalah pola pikir pemecahan masalah yang dapat diterapkan secara unplugged (tanpa komputer) dalam kehidupan sehari-hari maupun berbagai mata pelajaran.",
+      artifactAnalysis: "Penguasaan 4 fondasi CT (Dekomposisi, Pengenalan Pola, Abstraksi, dan Algoritma), penerapan CT melalui analisis latihan soal Bebras, serta pemetaan integrasi CT secara eksplisit ke dalam sintaks RPP/Modul Ajar dan LKPD.",
+      futureAction: "Komitmen untuk mengintegrasikan fondasi CT secara konsisten dalam RPP/Modul Ajar, menggeser peran mengajar dari sekadar teacher-centered menjadi fasilitator berpikir kritis, serta membiasakan siswa dengan latihan pemecahan masalah berbasis CT."
     },
     
     artifacts: [
@@ -221,8 +224,9 @@ const coursesData = {
     
     reflectionNarrative: {
       meaningfulExperience: "Dalam belajar pemrograman, sering kali peserta didik mengalami frustrasi ketika menemui error/bug. Mata kuliah Growth Mindset mengajarkan saya pentingnya 'The Power of Yet' (Saya belum bisa, tapi saya akan bisa). Membangun budaya kelas di mana kesalahan dianggap sebagai data penting untuk belajar adalah transformasi terbesar dalam pendekatan pedagogi saya.",
-      artifactAnalysis: "Artefak berupa Jurnal Refleksi Pribadi Pengelolaan 'Fixed Mindset Triggers', Panduan Umpan Balik Positif & Konstruktif (Praise the Process, not the Intelligence), serta Desain Aktivitas Reflektif Siswa pasca-debugging kode.",
-      futureAction: "Saya akan selalu memberikan apresiasi terhadap proses perjuangan, ketekunan, dan strategi belajar peserta didik, bukan hanya skor akhir atau produk instan."
+      challenge: "Tantangan terbesar adalah menjaga konsistensi umpan balik positif ketika peserta didik berulang kali mengalami kegagalan dan kehilangan kepercayaan diri saat melakukan debugging.",
+      artifactAnalysis: "Fokus pada komunikasi berorientasi proses (Growth Mindset Voice), penggunaan kata 'Belum' (The Power of 'Yet'), guru sebagai teladan, dan pemberian umpan balik konstruktif.",
+      futureAction: "Komitmen untuk mengubah tutur kata mengajar tanpa melabeli, menyikapi kesalahan siswa sebagai momen belajar, serta terus mengevaluasi dan mengembangkan diri."
     },
     
     artifacts: [
@@ -249,9 +253,10 @@ const coursesData = {
     summary: "Orientasi lingkungan sekolah mitra, observasi karakteristik peserta didik, asistensi mengajar, serta pelaksanaan siklus pembelajaran terbimbing pada mata pelajaran Informatika di sekolah.",
     
     reflectionNarrative: {
-      meaningfulExperience: "PPLT memberikan laboratorium nyata untuk menguji teori pedagogi yang dipelajari di kampus. Dari observasi langsung di lab komputer sekolah mitra, saya menemukan keberagaman kemampuan teknis peserta didik yang sangat tinggi, yang menuntut penerapan strategi scaffolding yang adaptif dan pendampingan sebaya (peer tutoring).",
-      artifactAnalysis: "Artefak mencakup Laporan Observasi Lingkungan Belajar Sekolah Mitra, Perangkat Pembelajaran Siklus Terbimbing 1, 2, dan 3 (Modul Ajar, Media Pembelajaran Interaktif, Lembar Observasi), serta Video Rekaman Praktik Pembelajaran Terbimbing.",
-      futureAction: "Memanfaatkan wawasan dari PPLT untuk lebih matang dalam manajemen waktu di laboratorium komputer, antisipasi kendala teknis jaringan, dan pemanfaatan media ajar berbasis web yang interaktif."
+      meaningfulExperience: "Pengalaman PPL Terbimbing menghubungkan teori perkuliahan dengan praktik nyata di lapangan, memperlihatkan bahwa peran guru tidak sebatas menguasai materi tetapi juga mencakup perencanaan, pengolahan waktu, hingga pengelolaan kelas yang kondusif. Praktik ini melatih kepekaan guru untuk mengambil keputusan spontan ketika dinamika kelas tidak berjalan sesuai dengan rencana awal.",
+      challenge: "Tantangan terbesar yang dihadapi adalah kenyataan bahwa perencanaan pembelajaran tidak bisa dibuat seragam (one size fits all). Guru dituntut menyusun modul ajar berbasis asesmen diagnostik untuk memetakan kebutuhan awal siswa, menerapkan diferensiasi pada kelas heterogen, serta menyadari bahwa kendala belajar siswa sering kali bersumber dari ketidaktepatan strategi pengajaran yang digunakan guru.",
+      artifactAnalysis: "Konsep utama yang dipelajari meliputi studi observasi untuk memahami karakter siswa dan iklim sekolah, asistensi mengajar bersama guru pamong, pelaksanaan praktik mengajar terbimbing berbasis model inovatif seperti PBL/PjBL, serta penerapan siklus refleksi berkelanjutan berdasarkan umpan balik dosen dan guru pamong.",
+      futureAction: "Perubahan yang berkomitmen dilakukan adalah menggeser paradigma dari teacher-centered menjadi student-centered, selalu mengawali perancangan modul dengan asesmen diagnostik, menerapkan pembelajaran berdiferensiasi dan socio-emotional learning (SEL), serta rutin menulis jurnal refleksi harian pascamengajar untuk perbaikan kualitas pembelajaran."
     },
     
     artifacts: [
@@ -278,9 +283,10 @@ const coursesData = {
     summary: "Kajian mendalam tentang teori perkembangan peserta didik (kognitif, sosio-emosional, moral), profiling gaya belajar, serta perancangan lingkungan belajar yang berpusat pada peserta didik (Culturally Responsive Teaching).",
     
     reflectionNarrative: {
-      meaningfulExperience: "Saya menyadari bahwa tidak ada satu metode mengajar yang cocok untuk semua anak (one-size-fits-all). Melalui profiling peserta didik, saya memetakan minat, latar belakang sosial budaya, dan kesiapan belajar (readiness) sebelum merancang proyek Informatika, sehingga materi web design dapat dikaitkan dengan kearifan lokal daerah setempat.",
-      artifactAnalysis: "Artefak meliputi Profiling Karakteristik Peserta Didik 1 Rombel, Modul Ajar Berbasis Culturally Responsive Teaching (CRT), dan Panduan Asesmen Non-Kognitif Awal Pembelajaran.",
-      futureAction: "Secara rutin melakukan asesmen diagnostik non-kognitif di awal semester untuk memahami kondisi psikososial siswa dan terus membangun relasi positif dengan peserta didik."
+      meaningfulExperience: "Materi perkuliahan ini memiliki keterkaitan yang sangat erat dengan peran sebagai calon guru karena menekankan bahwa perencanaan pembelajaran harus berangkat dari pemahaman terhadap karakteristik, tahapan perkembangan, motivasi, dan kebutuhan unik setiap peserta didik. Pemahaman mendalam ini menjadi fondasi utama bagi guru dalam merancang serta menentukan pendekatan, metode, strategi, hingga asesmen yang paling tepat agar proses pembelajaran dapat berlangsung secara efektif, relevan, dan bermakna bagi seluruh siswa.",
+      challenge: "Tantangan terbesar yang dihadapi dalam praktik lapangan adalah keterbatasan waktu untuk menerapkan pembelajaran berdiferensiasi secara optimal, seperti saat membagi perhatian, memberikan pendampingan (scaffolding), atau menyajikan tantangan tambahan. Selain itu, dari sudut pandang peserta didik, perbedaan perlakuan atau tugas sering kali disalahartikan sebagai tindakan membeda-bedakan, sehingga guru dituntut untuk membangun komunikasi yang jelas agar murid memahami bahwa diferensiasi dilakukan murni untuk memenuhi kebutuhan belajar mereka secara adil.",
+      artifactAnalysis: "Konsep utama yang dipelajari adalah pentingnya menciptakan pembelajaran yang berpihak pada peserta didik dengan memperlakukan mereka sebagai individu unik yang memiliki potensi dan latar belakang beragam. Pemetaan awal melalui observasi dan asesmen diagnosis menjadi langkah krusial sebelum memilih strategi pembelajaran. Seluruh konsep ini juga terintegrasi dan saling mendukung dengan mata kuliah Filosofi Pendidikan, Pendidikan Nilai, serta Pembelajaran Mendalam dan Asesmen.",
+      futureAction: "Perubahan yang akan dilakukan adalah menggeser fokus dalam merancang pembelajaran, dari yang semula berpatokan pada penyampaian materi menjadi pengenalan karakteristik serta kemampuan awal peserta didik terlebih dahulu. Ke depannya, proses mengajar akan dibiasakan dengan menghadirkan variasi aktivitas berbasis diskusi dan pemecahan masalah aktif, yang diimbangi dengan pengamatan berkelanjutan terhadap perkembangan siswa sebagai dasar pengambilan keputusan pedagogis."
     },
     
     artifacts: [
@@ -309,6 +315,7 @@ const coursesData = {
     
     reflectionNarrative: {
       meaningfulExperience: "Pembelajaran PSE membuktikan bahwa keberhasilan akademik dan keterampilan teknis komputasi tidak dapat dipisahkan dari kematangan emosi siswa. Teknik STOP (Stop, Take a breath, Observe, Proceed) dan mindfulness terbukti efektif meredakan kecemasan siswa saat mengerjakan ujian coding atau proyek kolaboratif.",
+      challenge: "Tantangannya adalah menciptakan ruang yang aman agar peserta didik mau mengenali dan menyampaikan kondisi emosinya tanpa merasa dihakimi oleh guru maupun teman.",
       artifactAnalysis: "Artefak terdiri dari Rencana Pembelajaran Terintegrasi PSE (Informatika), Panduan Penerapan Teknik Relaksasi & Refleksi Emosi di Kelas Komputer, serta Lembar Observasi Interaksi Sosial Peserta Didik.",
       futureAction: "Membiasakan 'check-in' emosi di 5 menit awal pembelajaran Informatika dan menumbuhkan etika kerja sama tim serta saling menghargai pendapat saat code-review kelompok."
     },
@@ -338,6 +345,7 @@ const coursesData = {
     
     reflectionNarrative: {
       meaningfulExperience: "Mata kuliah lanjutan ini memperluas kapasitas saya dalam merancang tugas unjuk kerja komprehensif. Menilai keterampilan abad ke-21 (kreativitas, kolaborasi, komunikasi, dan komputasi) menuntut rubrik analitik bertingkat dengan deskriptor yang jelas dan terukur.",
+      challenge: "Tantangan utamanya adalah menyusun rubrik yang cukup rinci untuk menilai proses dan produk proyek secara adil tanpa membebani guru maupun peserta didik.",
       artifactAnalysis: "Artefak berupa Perangkat Evaluasi Portofolio Pemrograman Siswa, Analisis Butir Soal Berbasis Item Response Theory sederhana, dan Desain Penilaian Siklus Proyek Rekayasa Perangkat Lunak Sederhana.",
       futureAction: "Menggunakan analytics data hasil belajar siswa untuk memberikan feedback presisi dan merancang remedial/pengayaan yang relevan secara personal."
     },
@@ -367,6 +375,7 @@ const coursesData = {
     
     reflectionNarrative: {
       meaningfulExperience: "Pengalaman paling berdampak adalah memimpin inisiatif pemberdayaan 'Workshop Literasi Keamanan Digital & Pemanfaatan AI Positif' bagi remaja dan komunitas sekolah. Saya belajar bagaimana mengelola pemangku kepentingan (stakeholder), menyusun anggaran, memimpin tim, serta mengukur dampak sosial dari program.",
+      challenge: "Tantangan yang dihadapi adalah menyelaraskan kebutuhan komunitas, pembagian peran tim, keterbatasan sumber daya, dan indikator keberhasilan dalam satu program yang terukur.",
       artifactAnalysis: "Artefak meliputi Proposal Proyek Kepemimpinan, Logbook Monitoring Pelaksanaan Kegiatan, Laporan Pertanggungjawaban (LPJ), Video Dokumenter Proyek, dan Hasil Evaluasi Kepuasan Mitra Komunitas.",
       futureAction: "Menjadi guru pemimpin (teacher leader) yang tidak hanya aktif di ruang kelas, tetapi juga aktif menginisiasi inovasi dan komunitas belajar praktisi di sekolah maupun MGMP."
     },
@@ -396,6 +405,7 @@ const coursesData = {
     
     reflectionNarrative: {
       meaningfulExperience: "Saya mendalami perancangan alur belajar bauran (blended learning) yang efektif, di mana sesi daring asinkron digunakan untuk eksplorasi konsep mandiri (video interaktif / kuis singkat) dan sesi luring tatap muka difokuskan untuk diskusi mendalam, kolaborasi proyek, dan pemecahan masalah.",
+      challenge: "Tantangannya adalah menjaga keterlibatan dan kemandirian peserta didik pada sesi daring, terutama ketika akses internet, perangkat, dan kebiasaan belajar mereka tidak sama.",
       artifactAnalysis: "Artefak mencakup Arsitektur Kelas LMS (Google Classroom / Moodle), Video Pembelajaran Informatika Animatif, Kuis Gamifikasi Pembelajaran, dan Panduan Belajar Mandiri Siswa.",
       futureAction: "Memaksimalkan fleksibilitas pembelajaran bauran untuk mendukung kemandirian belajar siswa (self-regulated learning) tanpa mengurangi kedalaman interaksi humanis guru-siswa."
     },
@@ -425,6 +435,7 @@ const coursesData = {
     
     reflectionNarrative: {
       meaningfulExperience: "Seminar PPG menjadi ruang sintesis untuk melihat kembali transformasi utuh diri saya: dari seorang pembelajar menjadi pendidik profesional yang reflektif. Mampu mempresentasikan best practice inovasi pembelajaran Informatika di hadapan dosen penguji dan rekan sejawat mengukuhkan kesiapan saya mengabdi di dunia pendidikan nasional.",
+      challenge: "Tantangan utama adalah menyintesiskan berbagai pengalaman PPG menjadi argumen reflektif yang utuh, berbasis bukti, dan mampu dipertanggungjawabkan secara akademik.",
       artifactAnalysis: "Artefak utama adalah E-Portofolio Web ini, Naskah Best Practice Pembelajaran Inovatif berbasis Computational Thinking & Project-Based Learning, serta Rekaman Presentasi Uji Kompetensi Mahasiswa PPG.",
       futureAction: "Menjadikan refleksi kritis sebagai kebiasaan sehari-hari (habit of mind) sepanjang karier keguruan, terus melakukan Penelitian Tindakan Kelas (PTK), dan menulis publikasi ilmiah pendidikan."
     },
@@ -454,6 +465,7 @@ const coursesData = {
     
     reflectionNarrative: {
       meaningfulExperience: "Pada PPL II, saya memegang tanggung jawab penuh dalam mengelola kelas secara mandiri selama satu semester. Pengalaman mengintegrasikan pembelajaran berdiferensiasi dengan pendekatan STEAM dan membimbing siswa dalam proyek coding aplikasi tepat guna memberikan rasa kepuasan profesional yang luar biasa.",
+      challenge: "Tantangannya adalah menjaga kualitas pembelajaran, manajemen kelas, administrasi, dan penelitian tindakan kelas secara bersamaan selama praktik mengajar mandiri.",
       artifactAnalysis: "Artefak meliputi Laporan Lengkap PPL II Mandiri, Perangkat Pembelajaran Siklus Mandiri 1-4, Laporan Penelitian Tindakan Kelas (PTK Kolaboratif), serta Portofolio Ekstrakurikuler Robotika/Coding Club.",
       futureAction: "Mengaplikasikan seluruh standar kompetensi guru (Pedagogik, Kepribadian, Sosial, dan Profesional) secara paripurna di satuan pendidikan tempat saya bertugas kelak."
     },
@@ -469,3 +481,16 @@ const coursesData = {
     sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
   }
 };
+
+// Adaptasi narasi refleksi ke format 4C yang digunakan oleh app.js.
+Object.values(coursesData).forEach((course) => {
+  const narrative = course.reflectionNarrative;
+  if (!narrative) return;
+
+  course.reflection = {
+    connection: narrative.meaningfulExperience,
+    challenge: narrative.challenge,
+    concept: narrative.artifactAnalysis,
+    change: narrative.futureAction
+  };
+});

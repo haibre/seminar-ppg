@@ -533,6 +533,56 @@ function renderCourse(courseId) {
       </div>
     </div>
 
+    <!-- KERANGKA REFLEKSI 4C -->
+    <section class="mb-8">
+      <div class="mb-5">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold mb-2">
+          <i class="fa-solid fa-layer-group"></i>
+          <span>Kerangka Refleksi 4C</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+          Lebar Refleksi Pembelajaran
+        </h2>
+        <p class="text-slate-600 text-sm mt-1">
+          Jelajahi refleksi melalui empat perspektif utama: Connection, Challenge, Concept, dan Change.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-white rounded-2xl border border-blue-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+          <div class="w-11 h-11 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center text-lg mb-4">
+            <i class="fa-solid fa-link"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 mb-2">Connection</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">${course.reflection?.connection || "Menghubungkan materi perkuliahan dengan pengalaman, pengetahuan, dan praktik pembelajaran sebelumnya."}</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-amber-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+          <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-lg mb-4">
+            <i class="fa-solid fa-mountain-sun"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 mb-2">Challenge</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">${course.reflection?.challenge || "Mengidentifikasi tantangan, kesulitan, serta hambatan yang muncul selama proses belajar dan praktik."}</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-emerald-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+          <div class="w-11 h-11 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg mb-4">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 mb-2">Concept</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">${course.reflection?.concept || "Merumuskan konsep, teori, dan wawasan baru yang diperoleh untuk memperkuat pemahaman profesional."}</p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-purple-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all">
+          <div class="w-11 h-11 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg mb-4">
+            <i class="fa-solid fa-arrows-rotate"></i>
+          </div>
+          <h3 class="font-extrabold text-slate-900 mb-2">Change</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">${course.reflection?.change || "Menentukan perubahan, rencana aksi, dan komitmen perbaikan yang akan diterapkan di masa depan."}</p>
+        </div>
+      </div>
+    </section>
+
 
 
     <!-- PDF VIEWER SECTION -->
