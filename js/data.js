@@ -30,52 +30,65 @@ const studentProfile = {
   }
 };
 
+const refleksiPpgData = {
+  pdfUrl: "https://drive.google.com/file/d/1JslKGBVnoMePuuR5nfGdwCqZHg0FTGwI/preview",
+  downloadUrl: "https://drive.google.com/file/d/1JslKGBVnoMePuuR5nfGdwCqZHg0FTGwI/view?usp=sharing"
+};
+
 const identifikasiDiriData = {
   id: "identifikasi-diri",
   title: "Identifikasi Diri & Visi Misi",
   subtitle: "Landasan Filosofis, Komitmen Moral, serta Arah Tujuan Strategis Pendidik Informatika",
   visi: {
-    title: "Visi Guru Profesional",
-    statement: "“Menjadi pendidik profesional yang berintegritas, transformatif, dan berjiwa pembelajar sepanjang hayat dalam mewujudkan pembelajaran Informatika yang memerdekakan, berpusat pada peserta didik, menumbuhkan nalar komputasional, serta berkarakter Profil Pelajar Pancasila di era digital.”",
+    title: "Visi",
+    statement: "“Mewujudkan pendidikan yang inklusif, bermakna, dan merata agar setiap peserta didik berkembang sesuai potensinya dan siap menghadapi masa depan.”",
     description: "Visi ini merefleksikan cita-cita luhur untuk menuntun segala kodrat alam dan zaman peserta didik agar mereka tidak hanya cakap mengoperasikan teknologi, melainkan mampu menjadi kreator inovatif, beretika, dan pemecah masalah (problem solver) yang adaptif bagi kemajuan bangsa."
   },
   misi: [
     {
       number: "01",
-      title: "Menyelenggarakan Pembelajaran Berpusat pada Peserta Didik",
-      description: "Merancang dan melaksanakan pembelajaran Informatika yang berdiferensiasi (TaRL & UbD) serta kontekstual, guna memenuhi kebutuhan belajar dan potensi unik setiap peserta didik.",
+      title: "Berpihak pada murid",
+      description: "mengaitkan Informatika dengan masalah nyata dalam kehidupan sehari-hari.",
       icon: "fa-chalkboard-user",
       color: "from-blue-600 to-indigo-700",
       badgeColor: "bg-blue-100 text-blue-800"
     },
     {
       number: "02",
-      title: "Membudayakan Berpikir Komputasional (Computational Thinking)",
-      description: "Mengintegrasikan 4 pilar Computational Thinking (Dekomposisi, Pengenalan Pola, Abstraksi, dan Perancangan Algoritma) sebagai fondasi bernalar logis, kritis, dan sistematis.",
+      title: "Belajar secara bermakna",
+      description: "mengaitkan Informatika dengan masalah nyata dalam kehidupan sehari-hari.",
       icon: "fa-microchip",
       color: "from-cyan-600 to-blue-700",
       badgeColor: "bg-cyan-100 text-cyan-800"
     },
     {
       number: "03",
-      title: "Menumbuhkan Lingkungan Belajar Inklusif & Sosial Emosional",
-      description: "Membangun iklim kelas yang aman, nyaman, dan berkesadaran penuh (mindfulness) melalui penerapan 5 kompetensi sosial-emosional (CASEL) dan etika digital (digital citizenship).",
+      title: "Menumbuhkan daya pikir",
+      description: "mengembangkan kemampuan berpikir logis, kritis, kreatif, dan pemecahan masalah.",
       icon: "fa-heart-circle-check",
       color: "from-pink-600 to-rose-700",
       badgeColor: "bg-pink-100 text-pink-800"
     },
     {
       number: "04",
-      title: "Pemanfaatan Teknologi Inovatif & Pembelajaran Bauran",
-      description: "Mengoptimalkan media ajar interaktif, platform pembelajaran digital (LMS), dan model flipped classroom untuk mendorong kemandirian belajar (self-regulated learning).",
+      title: "Membangun keberanian belajar",
+      description: "menciptakan kelas yang aman, menghargai perbedaan, dan memandang kesalahan sebagai proses belajar.",
       icon: "fa-laptop-code",
       color: "from-teal-600 to-emerald-700",
       badgeColor: "bg-teal-100 text-teal-800"
     },
     {
       number: "05",
-      title: "Mengembangkan Kepemimpinan Pembelajaran & Budaya Kolaboratif",
-      description: "Berperan aktif sebagai guru penggerak/pemimpin pembelajaran yang gemar berbagi praktik baik (best practice) serta berkontribusi nyata bagi komunitas pendidikan.",
+      title: "Membekali kecakapan digital",
+      description: "membimbing peserta didik memanfaatkan teknologi secara bijak dan bertanggung jawab.",
+      icon: "fa-people-roof",
+      color: "from-amber-600 to-orange-700",
+      badgeColor: "bg-amber-100 text-amber-800"
+    },
+    {
+      number: "06",
+      title: "Terus bertumbuh sebagai guru",
+      description: "melakukan refleksi, menerima masukan, dan memperbaiki pembelajaran secara berkelanjutan.",
       icon: "fa-people-roof",
       color: "from-amber-600 to-orange-700",
       badgeColor: "bg-amber-100 text-amber-800"
@@ -114,6 +127,191 @@ const identifikasiDiriData = {
   ],
   pdfUrl: "https://drive.google.com/file/d/1adPmJ_cPgLCzAxPVf3KJB1emdjpI1uqU/preview",
   downloadUrl: "https://drive.google.com/file/d/1adPmJ_cPgLCzAxPVf3KJB1emdjpI1uqU/view?usp=sharing"
+};
+
+const karyaInovasiData = {
+  title: "Karya Inovasi",
+  subtitle: "KKA Learning Quest: Game edukasi untuk memvisualisasikan konsep berpikir komputasional.",
+  sections: [
+    {
+      indicator: "Identifikasi Kebutuhan dan Tantangan",
+      questions: [
+        {
+          question: "Bagaimana hasil amatan dan identifikasi terkait permasalahan atau kebutuhan atau tantangan yang ada dalam pembelajaran?",
+          content: [
+            {
+              type: "paragraph",
+              text: "Berdasarkan hasil amatan dan refleksi pembelajaran materi Berpikir Komputasional pada subbab stack, queue, sorting, dan searching di kelas X, murid mengalami kesulitan memahami dan menggambarkan bagaimana proses sorting dan searching berlangsung di dalam komputer. Penjelasan secara lisan maupun melalui video sudah diberikan, tetapi murid tetap merasa bingung."
+            },
+            {
+              type: "paragraph",
+              text: "Pencarian sumber belajar berbasis game yang sesuai dengan materi ini juga belum membuahkan hasil. Dengan demikian, dibutuhkan media yang memungkinkan murid menjalankan sendiri proses tersebut sehingga logika kerja komputer lebih mudah dibayangkan."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      indicator: "Perumusan gagasan dan tujuan inovasi",
+      questions: [
+        {
+          question: "Berdasarkan identifikasi di atas, bagaimana gagasan kreatif untuk mengembangkan solusi inovatif?",
+          content: [
+            {
+              type: "paragraph",
+              text: "Gagasan yang dikembangkan adalah KKA Learning Quest, yaitu game edukasi sederhana yang mensimulasikan cara kerja komputer pada proses stack, queue, sorting, dan searching. Di dalam game, murid menyusun tumpukan dan antrean serta menggeser elemen untuk mengurutkan data secara visual."
+            },
+            {
+              type: "paragraph",
+              text: "Dengan cara ini, konsep yang semula abstrak dapat dialami langsung oleh murid. Gagasan ini kreatif karena murid tidak hanya mendengar dan melihat penjelasan, tetapi merasakan prosesnya secara nyata sehingga lebih mudah memahami cara kerja komputer."
+            }
+          ]
+        },
+        {
+          question: "Bagaimana rumusan tujuan dari gagasan atau solusi inovasi tersebut?",
+          content: [
+            {
+              type: "ordered",
+              items: [
+                "Mempermudah murid memahami bagian logika komputer yang rumit sehingga mereka dapat menyerap materi dengan lebih cepat dan mudah.",
+                "Menjadikan pembelajaran berpikir komputasional lebih menyenangkan melalui bantuan visualisasi dan permainan."
+              ]
+            }
+          ]
+        },
+        {
+          question: "Bagaimana kebaruan, kreativitas, relevansi, kebermanfaatan, dan keefektifan produk inovasi yang telah dikembangkan?",
+          content: [
+            {
+              type: "highlights",
+              items: [
+                {
+                  label: "Kebaruan",
+                  text: "Kebaruan terletak pada game itu sendiri, karena belum ditemukan game terpublikasi yang memvisualisasikan logika ini. Pembelajaran sebelumnya hanya memanfaatkan presentasi PowerPoint atau video."
+                },
+                {
+                  label: "Kreativitas",
+                  text: "Murid menyimulasikan sendiri proses stack, queue, sorting, dan searching, bukan sekadar menyimak penjelasan."
+                },
+                {
+                  label: "Relevansi",
+                  text: "Game selaras dengan materi yang sedang dipelajari dan sesuai dengan karakteristik murid yang menyukai gaya belajar visual dan kinestetik sehingga tidak mudah bosan."
+                },
+                {
+                  label: "Kebermanfaatan",
+                  text: "Bagi murid, game ini memudahkan pemahaman, meningkatkan motivasi, dan memberi pengalaman belajar baru. Bagi guru, tersedia dashboard untuk memantau progres belajar murid secara real-time. Bagi calon guru, karya ini menumbuhkan kreasi tanpa batas demi kemajuan pendidikan Indonesia."
+                },
+                {
+                  label: "Keefektifan",
+                  text: "Game dapat diakses dari mana saja. Pada uji coba, angket yang diisi 21 murid menghasilkan skor rata-rata 4,19 dari 5, dengan 79,4% jawaban berada pada kategori setuju atau sangat setuju."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      indicator: "Riset dan pengembangan solusi",
+      questions: [
+        {
+          question: "Bagaimana hasil riset sederhana atau informasi karya-karya inovatif yang sudah ada terkait solusi inovatif?",
+          content: [
+            {
+              type: "paragraph",
+              text: "Pada tahap awal, dilakukan pencarian aplikasi visualisasi sejenis Scratch yang berfokus pada searching, sorting, stack, dan queue. Aplikasi yang ditemukan adalah VisuAlgo."
+            },
+            {
+              type: "paragraph",
+              text: "Namun, VisuAlgo dinilai belum ramah pengguna dan masih membingungkan dalam pengoperasiannya, serta tidak memiliki integrasi progres belajar murid yang dapat dilihat langsung oleh guru. Kekurangan tersebut melatarbelakangi pembuatan KKA Learning Quest yang lebih mudah digunakan dan dipahami murid SMA, dengan dashboard murid yang terhubung ke dashboard guru."
+            }
+          ]
+        },
+        {
+          question: "Bagaimana rancangan atau prototipe dari karya inovatif tersebut?",
+          content: [
+            {
+              type: "paragraph",
+              text: "Prototipe berupa game pembelajaran yang terdiri atas 4 bab. Fitur utamanya meliputi:"
+            },
+            {
+              type: "ordered",
+              items: [
+                "XP yang diberikan ketika murid menjawab benar dan dikurangi ketika menjawab salah, disertai sistem level.",
+                "Badge yang diperoleh setelah murid menyelesaikan tantangan satu subbab.",
+                "Dashboard guru untuk mengakses dan memantau hasil progres belajar murid."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      indicator: "Implementasi dan Penerapan",
+      questions: [
+        {
+          question: "Jika karya inovasi sudah pernah diimplementasikan, bagaimana proses implementasinya?",
+          content: [
+            {
+              type: "paragraph",
+              text: "Karya sudah diimplementasikan pada kelas X.2 SMA Negeri 3 Salatiga pada hari Jumat, 16 Oktober 2026. Prosesnya: (1) murid diarahkan mendaftar di aplikasi dengan mengisi nama lengkap, username, dan password; (2) murid mencoba menyelesaikan misi permainan; (3) murid mengisi angket untuk mengukur kegunaan aplikasi."
+            },
+            {
+              type: "paragraph",
+              text: "Dashboard guru mencatat 72 akun murid terdaftar, 68 di antaranya telah mulai mengerjakan misi. Penyelesaian 100% tercatat pada Bab 1 oleh 37 murid, Bab 2 oleh 40 murid, Bab 3 oleh 27 murid, dan Bab 4 oleh 5 murid. Rata-rata XP adalah 691,5, rata-rata badge 8,8, dan 30 murid telah mencapai level 5."
+            }
+          ]
+        },
+        {
+          question: "Jika karya inovasi belum pernah diimplementasikan, bagaimana rancangan proses implementasinya?",
+          content: [
+            {
+              type: "paragraph",
+              text: "Tidak berlaku, karena karya inovasi sudah pernah diimplementasikan (lihat jawaban pada baris sebelumnya)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      indicator: "Evaluasi",
+      questions: [
+        {
+          question: "Bagaimana tahapan evaluasi untuk mengukur tingkat keberhasilan inovasi tersebut?",
+          content: [
+            {
+              type: "paragraph",
+              text: "Evaluasi dilakukan melalui dua tahap:"
+            },
+            {
+              type: "ordered",
+              items: [
+                "Angket kuesioner berisi 22 pernyataan berskala 1–5 yang mencakup pemahaman materi (7 butir), kemudahan penggunaan dan tampilan (7 butir), serta motivasi belajar (8 butir), ditambah dua pertanyaan terbuka tentang bagian yang paling disukai dan saran perbaikan.",
+                "Pemantauan dashboard guru untuk melihat XP, level, persentase penyelesaian tiap bab, dan badge murid."
+              ]
+            },
+            {
+              type: "highlights",
+              items: [
+                {
+                  label: "Hasil angket (21 responden)",
+                  text: "Skor rata-rata keseluruhan 4,19 dari 5 (79,4% setuju atau sangat setuju). Rata-rata per aspek: motivasi belajar 4,30, pemahaman materi 4,21, dan kemudahan penggunaan 4,04. Butir tertinggi adalah game membantu memahami materi lebih cepat dan keinginan merekomendasikan game kepada teman (masing-masing 4,43), sedangkan yang terendah adalah kenyamanan efek suara dan musik latar (3,71)."
+                },
+                {
+                  label: "Masukan murid",
+                  text: "Petunjuk permainan diperjelas, teks dibuat lebih terbaca terhadap latar, tampilan visual dan elemen game lebih bervariasi, serta tingkat kesulitan ditingkatkan agar lebih menantang. Bab 2 (stack dan queue) dan Bab 3 (mengendalikan robot) paling banyak disebut sebagai bagian favorit."
+                }
+              ]
+            },
+            {
+              type: "paragraph",
+              text: "Hasil angket dan data dashboard digunakan sebagai dasar perbaikan game selanjutnya."
+            }
+          ]
+        }
+      ]
+    }
+  ]
 };
 
 const coursesData = {
@@ -314,10 +512,10 @@ const coursesData = {
     summary: "Integrasi 5 Kompetensi Sosial Emosional (CASEL): Kesadaran Diri, Manajemen Diri, Kesadaran Sosial, Keterampilan Berelasi, dan Pengambilan Keputusan yang Bertanggung Jawab dalam pembelajaran.",
     
     reflectionNarrative: {
-      meaningfulExperience: "Pembelajaran PSE membuktikan bahwa keberhasilan akademik dan keterampilan teknis komputasi tidak dapat dipisahkan dari kematangan emosi siswa. Teknik STOP (Stop, Take a breath, Observe, Proceed) dan mindfulness terbukti efektif meredakan kecemasan siswa saat mengerjakan ujian coding atau proyek kolaboratif.",
-      challenge: "Tantangannya adalah menciptakan ruang yang aman agar peserta didik mau mengenali dan menyampaikan kondisi emosinya tanpa merasa dihakimi oleh guru maupun teman.",
-      artifactAnalysis: "Artefak terdiri dari Rencana Pembelajaran Terintegrasi PSE (Informatika), Panduan Penerapan Teknik Relaksasi & Refleksi Emosi di Kelas Komputer, serta Lembar Observasi Interaksi Sosial Peserta Didik.",
-      futureAction: "Membiasakan 'check-in' emosi di 5 menit awal pembelajaran Informatika dan menumbuhkan etika kerja sama tim serta saling menghargai pendapat saat code-review kelompok."
+      meaningfulExperience: "Materi Pembelajaran Sosial Emosional (PSE) relevan dengan kesiapan saya sebagai calon pendidik karena membekali saya kemampuan mengenali dan mengelola emosi diri maupun peserta didik. Sementara itu, Experiential Learning (EL) memberikan pemahaman bahwa pengalaman langsung dapat menjadikan pembelajaran lebih bermakna dan berkesan.",
+      challenge: "Penerapan Experiential Learning (EL) menghadapi kendala berupa keterbatasan waktu untuk menyelesaikan seluruh tahapan siklus serta kesulitan merancang pembelajaran berbasis pengalaman pada materi yang bersifat teoretis dan abstrak.",
+      artifactAnalysis: "Konsep kunci yang saya pelajari adalah pendekatan Experiential Learning (EL) menurut David A. Kolb (1984), yaitu pembelajaran melalui transformasi pengalaman. Pendekatan ini terdiri atas empat tahap: pengalaman nyata, observasi reflektif, konseptualisasi abstrak, dan eksperimentasi aktif yang saling berkaitan untuk menciptakan pembelajaran bermakna.",
+      futureAction: "Setelah mempelajari mata kuliah ini, saya akan membiasakan check-in emosi sebelum pembelajaran dan mengintegrasikan Experiential Learning secara fleksibel agar pembelajaran lebih kontekstual, bermakna, dan berkesan bagi peserta didik."
     },
     
     artifacts: [
@@ -326,7 +524,7 @@ const coursesData = {
       { name: "Jurnal Refleksi PSE dalam Pengelolaan Kelas Digital", type: "Laporan Refleksi", pages: "5 Halaman" }
     ],
     
-    pdfUrl: "https://drive.google.com/file/d/1SamplePSE_UKSW/preview",
+    pdfUrl: "https://docs.google.com/document/d/1zfxEFjfQ6HcOuFpElXS_SSjLpjoxQMw6/preview",
     downloadUrl: "https://drive.google.com/file/d/1SamplePSE_UKSW/view?usp=sharing",
     sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
   },
@@ -344,10 +542,10 @@ const coursesData = {
     summary: "Pengembangan strategi pembelajaran tingkat tinggi (HOTS), evaluasi kurikulum mendalam, asesmen portofolio digital terstandar, dan pemanfaatan data asesmen untuk perbaikan kurikuler berkelanjutan.",
     
     reflectionNarrative: {
-      meaningfulExperience: "Mata kuliah lanjutan ini memperluas kapasitas saya dalam merancang tugas unjuk kerja komprehensif. Menilai keterampilan abad ke-21 (kreativitas, kolaborasi, komunikasi, dan komputasi) menuntut rubrik analitik bertingkat dengan deskriptor yang jelas dan terukur.",
-      challenge: "Tantangan utamanya adalah menyusun rubrik yang cukup rinci untuk menilai proses dan produk proyek secara adil tanpa membebani guru maupun peserta didik.",
-      artifactAnalysis: "Artefak berupa Perangkat Evaluasi Portofolio Pemrograman Siswa, Analisis Butir Soal Berbasis Item Response Theory sederhana, dan Desain Penilaian Siklus Proyek Rekayasa Perangkat Lunak Sederhana.",
-      futureAction: "Menggunakan analytics data hasil belajar siswa untuk memberikan feedback presisi dan merancang remedial/pengayaan yang relevan secara personal."
+      meaningfulExperience: "Mata kuliah ini penting bagi saya sebagai calon guru untuk memahami keberagaman karakteristik dan kebutuhan peserta didik serta merancang pembelajaran berbasis DUP agar semua murid memperoleh kesempatan belajar yang setara dan bermakna.",
+      challenge: "Sebelumnya, saya menyamaratakan pembelajaran untuk semua murid. Kini, saya memahami pentingnya asesmen diagnostik untuk mengenali kebutuhan individual serta menerapkan tiga prinsip DUP sejak awal perencanaan agar setiap murid memperoleh kesempatan belajar yang setara. ",
+      artifactAnalysis: "Konsep utama yang saya pelajari meliputi analisis karakteristik dan kebutuhan peserta didik, penerapan tiga prinsip DUP (representasi, tindakan dan ekspresi, serta keterlibatan), dan penyusunan asesmen yang adaptif serta inklusif.",
+      futureAction: "Saya berkomitmen melakukan pemetaan profil murid secara rutin, merancang modul ajar berbasis DUP yang fleksibel, serta memberikan pilihan bentuk asesmen agar setiap murid dapat menunjukkan pemahamannya sesuai kebutuhan dan potensinya. "
     },
     
     artifacts: [
@@ -356,7 +554,7 @@ const coursesData = {
       { name: "Portofolio Rubrik Penilaian Proyek Berkelanjutan", type: "Rubrik Analitik", pages: "7 Halaman" }
     ],
     
-    pdfUrl: "https://drive.google.com/file/d/1SamplePMALanjut_UKSW/preview",
+    pdfUrl: "https://drive.google.com/file/d/1K-CMxUz82tHysczxlWeFe33uI433BfwP/preview",
     downloadUrl: "https://drive.google.com/file/d/1SamplePMALanjut_UKSW/view?usp=sharing",
     sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
   },
@@ -374,10 +572,10 @@ const coursesData = {
     summary: "Perancangan, pelaksanaan, dan evaluasi program pelayanan masyarakat berbasis sekolah/komunitas (Service Learning) dengan prinsip Servant Leadership dan manajemen proyek terstruktur.",
     
     reflectionNarrative: {
-      meaningfulExperience: "Pengalaman paling berdampak adalah memimpin inisiatif pemberdayaan 'Workshop Literasi Keamanan Digital & Pemanfaatan AI Positif' bagi remaja dan komunitas sekolah. Saya belajar bagaimana mengelola pemangku kepentingan (stakeholder), menyusun anggaran, memimpin tim, serta mengukur dampak sosial dari program.",
-      challenge: "Tantangan yang dihadapi adalah menyelaraskan kebutuhan komunitas, pembagian peran tim, keterbatasan sumber daya, dan indikator keberhasilan dalam satu program yang terukur.",
-      artifactAnalysis: "Artefak meliputi Proposal Proyek Kepemimpinan, Logbook Monitoring Pelaksanaan Kegiatan, Laporan Pertanggungjawaban (LPJ), Video Dokumenter Proyek, dan Hasil Evaluasi Kepuasan Mitra Komunitas.",
-      futureAction: "Menjadi guru pemimpin (teacher leader) yang tidak hanya aktif di ruang kelas, tetapi juga aktif menginisiasi inovasi dan komunitas belajar praktisi di sekolah maupun MGMP."
+      meaningfulExperience: "Mata kuliah ini relevan bagi saya sebagai calon pendidik dan pemimpin di lingkungan sekolah. Saya menyadari bahwa instructional leadership menuntut guru tidak hanya mengajar, tetapi juga menjadi agen perubahan yang mampu merancang solusi nyata untuk meningkatkan kualitas pendidikan.",
+      challenge: "Tantangan yang saya hadapi meliputi pemetaan kebutuhan lapangan secara objektif, membangun kerja sama dan komunikasi tim, serta menyesuaikan strategi ketika muncul kendala agar tujuan projek tetap tercapai.",
+      artifactAnalysis: "Konsep utama yang saya pelajari meliputi kepemimpinan pembelajaran, perencanaan projek berbasis kebutuhan lapangan, manajemen projek yang adaptif, serta monitoring dan evaluasi untuk memastikan dampak dan keberlanjutan projek.",
+      futureAction: "Saya berkomitmen menerapkan kepemimpinan pembelajaran dengan mengidentifikasi kebutuhan sekolah secara objektif, menginisiasi inovasi yang berpihak pada murid, membangun kolaborasi dengan rekan sejawat, serta memastikan setiap program memiliki evaluasi dan keberlanjutan yang jelas."
     },
     
     artifacts: [
@@ -386,7 +584,7 @@ const coursesData = {
       { name: "Poster & Media Edukasi Literasi Digital Komunitas", type: "Media Diseminasi", pages: "4 Halaman" }
     ],
     
-    pdfUrl: "https://drive.google.com/file/d/1SampleProjectKepemimpinan_UKSW/preview",
+    pdfUrl: "https://drive.google.com/file/d/1smwCpIjvqhJvMif5StpOqAMp1szEkJrt/preview",
     downloadUrl: "https://drive.google.com/file/d/1SampleProjectKepemimpinan_UKSW/view?usp=sharing",
     sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
   },
@@ -404,10 +602,10 @@ const coursesData = {
     summary: "Pemanfaatan Learning Management System (LMS), model Flipped Classroom, synchronous & asynchronous learning strategies, serta perancangan konten multimedia interaktif.",
     
     reflectionNarrative: {
-      meaningfulExperience: "Saya mendalami perancangan alur belajar bauran (blended learning) yang efektif, di mana sesi daring asinkron digunakan untuk eksplorasi konsep mandiri (video interaktif / kuis singkat) dan sesi luring tatap muka difokuskan untuk diskusi mendalam, kolaborasi proyek, dan pemecahan masalah.",
-      challenge: "Tantangannya adalah menjaga keterlibatan dan kemandirian peserta didik pada sesi daring, terutama ketika akses internet, perangkat, dan kebiasaan belajar mereka tidak sama.",
-      artifactAnalysis: "Artefak mencakup Arsitektur Kelas LMS (Google Classroom / Moodle), Video Pembelajaran Informatika Animatif, Kuis Gamifikasi Pembelajaran, dan Panduan Belajar Mandiri Siswa.",
-      futureAction: "Memaksimalkan fleksibilitas pembelajaran bauran untuk mendukung kemandirian belajar siswa (self-regulated learning) tanpa mengurangi kedalaman interaksi humanis guru-siswa."
+      meaningfulExperience: "Mata kuliah ini relevan bagi saya sebagai calon guru untuk memahami integrasi teknologi dalam pembelajaran, seperti daring, blended learning, dan hybrid learning, agar pembelajaran sesuai dengan perkembangan teknologi dan kebutuhan peserta didik.",
+      challenge: "Sebelumnya, saya memandang pembelajaran daring dan bauran sebatas penggunaan media digital. Kini, saya memahami pentingnya mempertimbangkan akses teknologi, kemampuan digital, keterlibatan murid, serta keseimbangan kegiatan daring dan tatap muka agar pembelajaran tetap efektif.",
+      artifactAnalysis: "Konsep utama yang saya pelajari meliputi kesenjangan digital, pemanfaatan AI, pembelajaran daring dan blended learning, desain instruksional digital, serta penerapan model PjBL, PBL, dan flipped classroom yang dirancang sesuai tujuan, aktivitas, media, dan asesmen pembelajaran.",
+      futureAction: "Ke depannya, saya akan lebih selektif memanfaatkan teknologi sesuai kebutuhan peserta didik, mengembangkan media digital interaktif, memilih model pembelajaran yang tepat, serta mempertimbangkan akses dan kesiapan murid agar pembelajaran lebih bermakna."  
     },
     
     artifacts: [
@@ -416,40 +614,11 @@ const coursesData = {
       { name: "Evaluasi Efektivitas Interaksi Sinkron-Asinkron", type: "Laporan Riset Kecil", pages: "6 Halaman" }
     ],
     
-    pdfUrl: "https://drive.google.com/file/d/1SampleDaringBauran_UKSW/preview",
+    pdfUrl: "https://drive.google.com/file/d/1PNSQ8HwVrz4v0AztH5CKLPBn6xHU8wxM/preview",
     downloadUrl: "https://drive.google.com/file/d/1SampleDaringBauran_UKSW/view?usp=sharing",
     sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
   },
 
-  "seminar-ppg": {
-    id: "seminar-ppg",
-    semester: 2,
-    title: "Seminar PPG",
-    code: "PPG-205",
-    sks: 2,
-    category: "Mata Kuliah Kulminasi & Diseminasi",
-    icon: "fa-graduation-cap",
-    color: "from-blue-800 to-slate-900",
-    badgeColor: "bg-blue-200 text-blue-900 border-blue-300 font-bold",
-    summary: "Kulminasi portofolio refleksi seluruh perjalanan akademik PPG, penyusunan artikel ilmiah/best practice, diseminasi karya inovatif, dan perumusan paradigma guru profesional berkelanjutan.",
-    
-    reflectionNarrative: {
-      meaningfulExperience: "Seminar PPG menjadi ruang sintesis untuk melihat kembali transformasi utuh diri saya: dari seorang pembelajar menjadi pendidik profesional yang reflektif. Mampu mempresentasikan best practice inovasi pembelajaran Informatika di hadapan dosen penguji dan rekan sejawat mengukuhkan kesiapan saya mengabdi di dunia pendidikan nasional.",
-      challenge: "Tantangan utama adalah menyintesiskan berbagai pengalaman PPG menjadi argumen reflektif yang utuh, berbasis bukti, dan mampu dipertanggungjawabkan secara akademik.",
-      artifactAnalysis: "Artefak utama adalah E-Portofolio Web ini, Naskah Best Practice Pembelajaran Inovatif berbasis Computational Thinking & Project-Based Learning, serta Rekaman Presentasi Uji Kompetensi Mahasiswa PPG.",
-      futureAction: "Menjadikan refleksi kritis sebagai kebiasaan sehari-hari (habit of mind) sepanjang karier keguruan, terus melakukan Penelitian Tindakan Kelas (PTK), dan menulis publikasi ilmiah pendidikan."
-    },
-    
-    artifacts: [
-      { name: "Naskah Best Practice Pembelajaran Informatika Berdiferensiasi", type: "Artikel Ilmiah", pages: "25 Halaman" },
-      { name: "Dokumen Kompilasi Portofolio Refleksi Kritis Lengkap", type: "Dokumen Induk", pages: "45 Halaman" },
-      { name: "Slide Presentasi Sidang Kulminasi Portofolio PPG", type: "Paparan Uji", pages: "18 Slide" }
-    ],
-    
-    pdfUrl: "https://drive.google.com/file/d/1SampleSeminarPPG_UKSW/preview",
-    downloadUrl: "https://drive.google.com/file/d/1SampleSeminarPPG_UKSW/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
-  },
 
   "ppl-2": {
     id: "ppl-2",
@@ -464,10 +633,10 @@ const coursesData = {
     summary: "Praktik mengajar mandiri secara utuh di sekolah mitra, pelaksanaan Penelitian Tindakan Kelas (PTK) kolaboratif, keterlibatan aktif dalam manajemen sekolah, ekstrakurikuler, dan kegiatan kemasyarakatan sekolah.",
     
     reflectionNarrative: {
-      meaningfulExperience: "Pada PPL II, saya memegang tanggung jawab penuh dalam mengelola kelas secara mandiri selama satu semester. Pengalaman mengintegrasikan pembelajaran berdiferensiasi dengan pendekatan STEAM dan membimbing siswa dalam proyek coding aplikasi tepat guna memberikan rasa kepuasan profesional yang luar biasa.",
-      challenge: "Tantangannya adalah menjaga kualitas pembelajaran, manajemen kelas, administrasi, dan penelitian tindakan kelas secara bersamaan selama praktik mengajar mandiri.",
-      artifactAnalysis: "Artefak meliputi Laporan Lengkap PPL II Mandiri, Perangkat Pembelajaran Siklus Mandiri 1-4, Laporan Penelitian Tindakan Kelas (PTK Kolaboratif), serta Portofolio Ekstrakurikuler Robotika/Coding Club.",
-      futureAction: "Mengaplikasikan seluruh standar kompetensi guru (Pedagogik, Kepribadian, Sosial, dan Profesional) secara paripurna di satuan pendidikan tempat saya bertugas kelak."
+    meaningfulExperience: "Mata kuliah PPL Mandiri relevan bagi saya sebagai calon pendidik karena memberikan pengalaman langsung di sekolah serta membantu saya menghubungkan teori pedagogis dengan kondisi nyata dan dinamika pembelajaran di kelas.",
+      challenge: "Tantangan terbesar saya adalah menyesuaikan diri dengan dinamika kelas dan karakter murid yang beragam. Sebagai calon guru pemula, saya masih belajar mengelola kelas, menjaga kedisiplinan, serta menghadapi perbedaan motivasi dan sikap murid selama pembelajaran.",
+      artifactAnalysis: "Konsep penting yang saya pelajari meliputi keberagaman karakteristik murid, strategi pengelolaan kelas yang positif, pentingnya membangun hubungan baik dengan murid, serta refleksi diri untuk memperbaiki kualitas pembelajaran secara berkelanjutan.",
+      futureAction: "Saya berkomitmen untuk terus belajar memahami kebutuhan murid, menerapkan pengelolaan kelas yang humanis, membangun kesepakatan belajar, serta menggunakan metode interaktif agar tercipta lingkungan belajar yang aman, nyaman, dan bermakna."  
     },
     
     artifacts: [
@@ -476,7 +645,7 @@ const coursesData = {
       { name: "Dokumentasi Praktik Mengajar & Feedback Kepala Sekolah/Guru Pamong", type: "Bukti Kinerja", pages: "15 Halaman" }
     ],
     
-    pdfUrl: "https://drive.google.com/file/d/1SamplePPL2_UKSW/preview",
+    pdfUrl: "https://drive.google.com/file/d/1j_XP_y_83Ot8azszaNVcVuAwGaimPp0R/preview",
     downloadUrl: "https://drive.google.com/file/d/1SamplePPL2_UKSW/view?usp=sharing",
     sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
   }

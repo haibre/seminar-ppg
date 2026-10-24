@@ -12,27 +12,42 @@ let currentFilter = "all";
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
   initMobileMenu();
+  initHeaderScroll();
   handleRouting();
-  
+
   // Tangani event navigasi browser (Back/Forward) & Hash change
   window.addEventListener("hashchange", handleRouting);
 });
+
+function initHeaderScroll() {
+  const updateHeader = () => {
+    const header = document.getElementById("site-header");
+    if (!header) return;
+
+    const hash = window.location.hash.replace("#", "");
+    const isDashboard = !hash || hash === "dashboard" || hash === "beranda";
+    header.classList.toggle("is-scrolled", window.scrollY > 24 || !isDashboard);
+  };
+
+  window.addEventListener("scroll", updateHeader, { passive: true });
+  updateHeader();
+}
 
 /**
  * Inisialisasi Navigasi Desktop & Dropdown
  */
 function initNavigation() {
   const dropdownButtons = document.querySelectorAll(".dropdown-btn");
-  
+
   dropdownButtons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.stopPropagation();
       const menu = btn.nextElementSibling;
       const isOpen = !menu.classList.contains("hidden");
-      
+
       // Tutup semua dropdown lain
       closeAllDropdowns();
-      
+
       if (!isOpen) {
         menu.classList.remove("hidden");
         btn.querySelector(".chevron-icon")?.classList.add("rotate-180");
@@ -80,6 +95,9 @@ function initMobileMenu() {
 
   if (closeMobileMenuBtn) closeMobileMenuBtn.addEventListener("click", closeDrawer);
   if (drawerOverlay) drawerOverlay.addEventListener("click", closeDrawer);
+  document.querySelectorAll("#mobile-drawer a.mobile-nav-link").forEach((link) => {
+    link.addEventListener("click", closeDrawer);
+  });
 
   // Akordeon Mobile
   const accordionHeaders = document.querySelectorAll(".mobile-accordion-header");
@@ -88,7 +106,7 @@ function initMobileMenu() {
       const content = header.nextElementSibling;
       const icon = header.querySelector(".accordion-icon");
       const isHidden = content.classList.contains("hidden");
-      
+
       if (isHidden) {
         content.classList.remove("hidden");
         if (icon) icon.classList.add("rotate-180");
@@ -105,6 +123,8 @@ function initMobileMenu() {
  */
 function handleRouting() {
   closeAllDropdowns();
+  const modalRoot = document.getElementById("modal-root");
+  if (modalRoot) modalRoot.innerHTML = "";
   const hash = window.location.hash.replace("#", "");
 
   if (!hash || hash === "dashboard" || hash === "beranda") {
@@ -112,11 +132,21 @@ function handleRouting() {
     currentCourseId = null;
     renderDashboard();
     updateActiveNavHighlight(null);
+  } else if (hash === "refleksi-ppg") {
+    currentView = "refleksi-ppg";
+    currentCourseId = null;
+    renderRefleksiPpg();
+    updateActiveNavHighlight(hash);
   } else if (hash === "identifikasi-diri" || hash === "visi-misi") {
     currentView = "identifikasi-diri";
     currentCourseId = "identifikasi-diri";
     renderIdentifikasiDiri();
     updateActiveNavHighlight("identifikasi-diri");
+  } else if (hash === "karya-inovasi") {
+    currentView = "karya-inovasi";
+    currentCourseId = null;
+    renderKaryaInovasi();
+    updateActiveNavHighlight("karya-inovasi");
   } else if (hash.startsWith("mk-")) {
     const courseId = hash.replace("mk-", "");
     if (coursesData[courseId]) {
@@ -130,6 +160,12 @@ function handleRouting() {
     }
   } else {
     window.location.hash = "#dashboard";
+  }
+
+  const header = document.getElementById("site-header");
+  if (header) {
+    const isDashboard = !hash || hash === "dashboard" || hash === "beranda";
+    header.classList.toggle("is-scrolled", window.scrollY > 24 || !isDashboard);
   }
 
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -156,6 +192,16 @@ function updateActiveNavHighlight(targetId) {
     return;
   }
 
+  if (targetId === "refleksi-ppg") {
+    document.querySelectorAll("[data-nav-id='refleksi-ppg']").forEach(btn => btn.classList.add("text-yellow-400", "font-bold", "bg-blue-800/60"));
+    return;
+  }
+
+  if (targetId === "karya-inovasi") {
+    document.querySelectorAll("[data-nav-id='karya-inovasi']").forEach(btn => btn.classList.add("text-yellow-400", "font-bold", "bg-blue-800/60"));
+    return;
+  }
+
   // Highlight menu mata kuliah terkait
   const activeLinks = document.querySelectorAll(`[data-course-id="${targetId}"]`);
   activeLinks.forEach(link => {
@@ -175,40 +221,43 @@ function renderDashboard() {
 
   mainContent.innerHTML = `
     <!-- HERO SECTION -->
-    <section class="relative bg-gradient-to-br from-[#0f172a] via-[#1e3a8a] to-[#172554] text-white py-16 md:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden rounded-3xl shadow-2xl border border-blue-800/50 mb-12">
-      <!-- Background Ambient Glow -->
-      <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
-      
-      <div class="relative max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+    <section class="relative left-1/2 -translate-x-1/2 -mt-28 w-screen min-h-[760px] md:min-h-[820px] flex items-center text-white px-4 sm:px-6 lg:px-8 overflow-hidden mb-12 bg-[#101b35]">
+      <picture class="absolute inset-0 h-full w-full">
+        <source media="(min-width: 1024px)" srcset="assets/hero.png">
+        <img src="assets/@SagetPhoto-528.jpg" alt="Brilian Herda mengenakan toga wisuda" class="h-full w-full object-cover object-[center_22%] md:object-[center_24%]">
+      </picture>
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0b1730]/95 via-[#102345]/80 to-[#102345]/25"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0b1730]/60 via-transparent to-[#0b1730]/15"></div>
+
+      <div class="relative max-w-6xl w-full mx-auto flex flex-col lg:flex-row items-center gap-12 py-20 md:py-24">
         <!-- Text & Badges -->
-        <div class="flex-1 text-center lg:text-left">
+        <div class="flex-1 text-center lg:ml-[40%] lg:mr-[5%] lg:text-left">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs sm:text-sm font-semibold tracking-wide mb-6 backdrop-blur-sm animate-pulse">
             <i class="fa-solid fa-graduation-cap text-amber-400"></i>
-            <span>E-Portofolio Kulminasi Seminar PPG Calon Guru</span>
+            <span>E-Portofolio</span>
           </div>
 
           <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight mb-6">
-            Refleksi Kritis & <span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400">Artefak Pembelajaran</span>
+            SEMINAR PPG<span class="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 via-yellow-200 to-amber-400"><br>Inovasi Game Edukasi</span>
           </h1>
 
           <p class="text-base sm:text-lg text-slate-200 max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed mb-8">
-            Dokumentasi komprehensif perjalanan refleksi transformatif calon guru profesional bidang 
-            <strong class="text-amber-300 font-semibold">Informatika</strong> di 
+            Dokumentasi komprehensif perjalanan refleksi transformatif calon guru profesional bidang
+            <strong class="text-amber-300 font-semibold">Informatika</strong> di
             <span class="text-white font-medium underline decoration-amber-400/60 decoration-2">Universitas Kristen Satya Wacana (UKSW)</span>.
           </p>
 
           <!-- Quick Action Buttons -->
-          <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4">
-            <a href="#identifikasi-diri" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-900 font-bold shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2">
+          <div class="flex flex-wrap items-center justify-center lg:flex-nowrap lg:justify-start gap-4 lg:gap-2">
+            <a href="#identifikasi-diri" class="px-6 lg:px-2 xl:px-3 py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-900 font-bold shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-200 flex items-center gap-2 lg:whitespace-nowrap lg:text-xs xl:text-sm">
               <i class="fa-solid fa-id-card-clip"></i>
               <span>Identifikasi Diri (Visi & Misi)</span>
             </a>
-            <a href="#mk-pembelajaran-mendalam-asesmen" class="px-6 py-3.5 rounded-xl bg-blue-700/80 hover:bg-blue-600 text-white font-semibold border border-blue-500/60 transition-all duration-200 flex items-center gap-2">
+            <a href="#mk-pembelajaran-mendalam-asesmen" class="px-6 lg:px-2 xl:px-3 py-3.5 rounded-xl bg-blue-700/80 hover:bg-blue-600 text-white font-semibold border border-blue-500/60 transition-all duration-200 flex items-center gap-2 lg:whitespace-nowrap lg:text-xs xl:text-sm">
               <i class="fa-solid fa-book-open-reader"></i>
               <span>Mulai Telusuri Refleksi</span>
             </a>
-            <a href="#grid-matakuliah" class="px-6 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-white font-semibold border border-slate-600/60 hover:border-slate-500 transition-all duration-200 flex items-center gap-2 backdrop-blur-sm">
+            <a href="#grid-matakuliah" class="px-6 lg:px-2 xl:px-3 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 text-white font-semibold border border-slate-600/60 hover:border-slate-500 transition-all duration-200 flex items-center gap-2 lg:whitespace-nowrap lg:text-xs xl:text-sm backdrop-blur-sm">
               <i class="fa-solid fa-list-check text-amber-400"></i>
               <span>12 Mata Kuliah</span>
             </a>
@@ -228,16 +277,16 @@ function renderDashboard() {
               <div class="w-full h-full rounded-2xl bg-slate-100 overflow-hidden border-2 border-white flex items-center justify-center">
                 <!-- Replace the src with your asset path, e.g. assets/avatar.jpg -->
                 <img src="assets/RUMAH-PUTIH-1.JPG" alt="Avatar" class="w-full h-full object-cover" onerror="this.style.display='none'">
-                
+
               </div>
             </div>
-            
+
            <div class="absolute -bottom-2 -right-2 bg-amber-400 text-slate-900 p-2 rounded-xl shadow-md border-2 border-white text-xs font-bold flex items-center gap-1">
               <i class="fa-solid fa-circle-check text-green-700"></i>
-              
+
             </div>
           </div>
-          
+
 
           <!-- Detail Identitas -->
           <div class="flex-1 text-center md:text-left">
@@ -281,7 +330,7 @@ function renderDashboard() {
                 <span><strong class="text-emerald-600 font-bold"></strong></span>
               </div>
             </div>
-            
+
 
             <!-- Quote Visi Pendidik -->
             <div class="bg-slate-50 border-l-4 border-[#1e3a8a] p-4 rounded-r-2xl italic text-slate-700 text-sm leading-relaxed">
@@ -392,8 +441,146 @@ function renderDashboard() {
         </div>
       </div>
     </section>
+
+    <section class="mb-12">
+      <a href="#refleksi-ppg" class="group block rounded-2xl border border-blue-200 bg-white p-6 sm:p-8 shadow-sm hover:border-blue-400 hover:shadow-lg transition-all">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+          <div class="flex items-start gap-4">
+            <div class="w-12 h-12 shrink-0 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wide text-blue-700">Sintesis Perjalanan</span>
+              <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mt-1 group-hover:text-blue-800">Refleksi PPG</h2>
+              <p class="text-sm text-slate-600 mt-1">Buka dokumen dan baca refleksi perjalanan sebagai calon guru profesional.</p>
+            </div>
+          </div>
+          <span class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-blue-800 text-white text-sm font-bold group-hover:bg-blue-900 shrink-0">
+            <span>Buka Refleksi</span>
+            <i class="fa-solid fa-arrow-right text-xs"></i>
+          </span>
+        </div>
+      </a>
+    </section>
   `;
 }
+
+function renderRefleksiPpg() {
+  const reflections = [
+    {
+      question: "Setelah mengikuti rangkaian refleksi pengalaman belajar, menurut Anda, bagaimana seharusnya pendidikan di Indonesia?",
+      answer: "Setelah dua semester PPG, saya memahami bahwa pendidikan harus berpusat pada murid, menghargai keberagaman, dan mengembangkan potensi setiap individu. Pembelajaran perlu dirancang secara mendalam melalui tujuan yang jelas, asesmen autentik, serta pendekatan yang sesuai dengan kebutuhan murid. Selain aspek akademik, guru juga perlu mengembangkan keterampilan sosial emosional dan karakter peserta didik. Pemanfaatan teknologi serta refleksi berkelanjutan menjadi bagian penting untuk mewujudkan pembelajaran yang bermakna dan relevan dengan perkembangan zaman."
+    },
+    {
+      question: "Apa saja yang dapat Anda lakukan untuk menjadi guru profesional?",
+      answer: [
+        "1. Belajar sepanjang hayat: Memperbarui pengetahuan pedagogik dan Informatika melalui pelatihan, bacaan, dan penelitian.",
+        "2. Refleksi diri: Mengevaluasi pembelajaran secara rutin melalui jurnal dan portofolio untuk perbaikan berkelanjutan.",
+        "3. Memahami peserta didik: Memetakan kebutuhan, minat, dan karakteristik murid sebagai dasar pembelajaran.",
+        "4. Pembelajaran dan asesmen bermutu: Menerapkan UbD, Computational Thinking, asesmen autentik, dan HOTS.",
+        "5. Pemanfaatan teknologi: Mengintegrasikan LMS dan flipped classroom sesuai kebutuhan pembelajaran.",
+        "6. Kompetensi sosial emosional: Menjadi teladan, membangun empati, dan menciptakan kelas yang aman serta suportif.",
+        "7. Kolaborasi dan kontribusi: Aktif dalam komunitas belajar, melakukan PTK, dan berbagi praktik baik."
+      ]
+    },
+    {
+      question: "Apa saja tiga hal penting yang akan Anda lakukan ketika memulai karir sebagai guru?",
+      answer: [
+        "1. Membangun iklim kelas yang aman: Mengenal karakteristik murid, menerapkan PSE dan pendekatan responsif budaya agar setiap murid merasa dihargai dan nyaman belajar.",
+        "2. Merancang pembelajaran bermakna: Menerapkan UbD, Computational Thinking, teknologi, serta asesmen autentik dan HOTS agar murid memahami dan mampu menerapkan pengetahuan.",
+        "3. Mengembangkan profesionalisme: Melakukan refleksi rutin, menyusun portofolio, melaksanakan PTK, dan berkolaborasi dalam komunitas belajar guru."
+      ]
+    }
+  ];
+
+  const mainContent = document.getElementById("main-content");
+  if (!mainContent) return;
+
+  mainContent.innerHTML = `
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-500 mb-6">
+      <a href="#dashboard" class="hover:text-blue-700 flex items-center gap-1.5 font-medium">
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+      </a>
+      <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+      <span class="font-bold text-blue-900">Refleksi PPG</span>
+    </nav>
+
+    <header class="mb-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold mb-3">
+        <i class="fa-solid fa-lightbulb"></i>
+        <span>Sintesis Perjalanan</span>
+      </div>
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Refleksi PPG</h1>
+      <p class="text-slate-600 text-sm mt-2">Refleksi Keseluruhan Program PPG Calon Guru.</p>
+    </header>
+
+    <section id="refleksi-ppg-pdf-section" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden mb-10">
+      <div class="bg-slate-900 text-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg bg-red-600 flex items-center justify-center text-lg"><i class="fa-solid fa-file-pdf"></i></div>
+          <div>
+            <h2 class="font-bold">Dokumen Inti Refleksi PPG</h2>
+            <p class="text-xs text-slate-300">Pilih berkas PDF untuk menampilkannya di viewer.</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a id="refleksi-ppg-pdf-open" class="hidden items-center gap-2 px-3 py-2.5 rounded-lg bg-slate-700 text-white text-sm font-semibold hover:bg-slate-600" target="_blank" rel="noopener noreferrer">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Buka tab</span>
+          </a>
+        </div>
+      </div>
+      <div id="refleksi-ppg-pdf-empty" class="min-h-56 flex flex-col items-center justify-center text-center px-6 py-12 bg-slate-50">
+        <i class="fa-regular fa-file-pdf text-4xl text-slate-300 mb-3"></i>
+        <p class="font-semibold text-slate-700">PDF refleksi belum dihubungkan</p>
+        <p class="text-sm text-slate-500 mt-1">Ganti URL dummy di properti pdfUrl pada refleksiPpgData di js/data.js.</p>
+      </div>
+      <iframe id="refleksi-ppg-pdf-frame" class="hidden w-full h-[620px] lg:h-[780px] border-0 bg-slate-100" title="PDF Viewer Refleksi PPG"></iframe>
+    </section>
+
+    <section id="refleksi-ppg-cards" class="mb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        ${reflections.map((reflection, index) => `
+          <article class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm flex flex-col">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="w-8 h-8 shrink-0 rounded-lg bg-blue-100 text-blue-800 flex items-center justify-center text-sm font-extrabold">${index + 1}</span>
+              <h3 class="font-bold text-slate-900 leading-snug">${reflection.question}</h3>
+            </div>
+            ${Array.isArray(reflection.answer)
+              ? `<ul class="text-sm text-slate-600 leading-relaxed list-disc pl-5 space-y-2">${reflection.answer.map(point => `<li>${point}</li>`).join("")}</ul>`
+              : `<p class="text-sm text-slate-600 leading-relaxed">${reflection.answer}</p>`}
+          </article>
+        `).join("")}
+      </div>
+    </section>
+
+    <div class="flex justify-start border-t border-slate-200 pt-6">
+      <a href="#dashboard" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-100 text-slate-700 text-sm font-bold hover:bg-slate-200">
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Kembali ke Dashboard</span>
+      </a>
+    </div>
+  `;
+
+  const pdfSection = document.getElementById("refleksi-ppg-pdf-section");
+  const reflectionsSection = document.getElementById("refleksi-ppg-cards");
+  if (pdfSection && reflectionsSection) pdfSection.before(reflectionsSection);
+
+  const pdfFrame = document.getElementById("refleksi-ppg-pdf-frame");
+  const pdfEmptyState = document.getElementById("refleksi-ppg-pdf-empty");
+  const pdfOpenLink = document.getElementById("refleksi-ppg-pdf-open");
+
+  if (refleksiPpgData.pdfUrl.trim() && pdfFrame && pdfEmptyState && pdfOpenLink) {
+    pdfFrame.src = refleksiPpgData.pdfUrl;
+    pdfFrame.classList.remove("hidden");
+    pdfEmptyState.classList.add("hidden");
+    pdfOpenLink.href = refleksiPpgData.downloadUrl;
+    pdfOpenLink.classList.remove("hidden");
+    pdfOpenLink.classList.add("inline-flex");
+  }
+}
+
 
 /**
  * Template Helper untuk Kartu Mata Kuliah di Dashboard
@@ -448,7 +635,7 @@ function filterCourses(filter) {
   currentFilter = filter;
   const sem1Container = document.getElementById("container-sem1");
   const sem2Container = document.getElementById("container-sem2");
-  
+
   const allBtn = document.getElementById("filter-all-btn");
   const sem1Btn = document.getElementById("filter-sem1-btn");
   const sem2Btn = document.getElementById("filter-sem2-btn");
@@ -480,6 +667,7 @@ function filterCourses(filter) {
 function renderCourse(courseId) {
   const course = coursesData[courseId];
   const mainContent = document.getElementById("main-content");
+
   if (!course || !mainContent) return;
 
   // Dapatkan daftar id mata kuliah untuk navigasi prev/next
@@ -620,14 +808,15 @@ function renderCourse(courseId) {
 
       <!-- PDF IFRAME CONTAINER (Responsive 650px - 800px) -->
       <div class="relative w-full bg-slate-100 border-b border-slate-200">
-        <iframe 
+        <iframe
           id="pdf-frame"
-          src="${course.pdfUrl}" 
+          src="${course.pdfUrl}"
           class="w-full h-[650px] lg:h-[780px] border-0"
           title="PDF Viewer - ${course.title}"
           allow="autoplay"
         ></iframe>
       </div>
+    </section>
 
 
     <!-- PREV / NEXT COURSE FOOTER NAVIGATION -->
@@ -648,8 +837,8 @@ function renderCourse(courseId) {
             <div class="truncate max-w-[200px] sm:max-w-xs">Identifikasi Diri (Visi & Misi)</div>
           </div>
         </a>
-      `}
-
+      `
+      }
       <a href="#dashboard" class="px-5 py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold flex items-center gap-2 transition-colors">
         <i class="fa-solid fa-house"></i>
         <span>Kembali ke Beranda</span>
@@ -669,13 +858,175 @@ function renderCourse(courseId) {
 }
 
 /**
+ * RENDER TAMPILAN HALAMAN KARYA INOVASI
+ */
+function renderKaryaInovasi() {
+  const mainContent = document.getElementById("main-content");
+  if (!mainContent) return;
+  const steps = karyaInovasiData.sections.map((section, index) => ({
+    title: section.indicator,
+    summary: section.questions[0]?.question || "",
+    takeaway: `${section.questions.length} pertanyaan refleksi`,
+    icon: ["fa-magnifying-glass", "fa-lightbulb", "fa-flask", "fa-rocket", "fa-chart-line"][index] || "fa-lightbulb",
+  }));
+  const stepHtml = steps.map((step, stepIndex) => {
+    return `
+      <article class="innovation-step relative">
+        <div class="innovation-chevron">
+          <span class="innovation-chevron-icon"><i class="fa-solid ${step.icon}"></i></span>
+          <span class="innovation-chevron-copy">
+            <span class="innovation-chevron-label">Langkah</span>
+            <strong>${step.title}</strong>
+          </span>
+          <span class="innovation-chevron-number">${String(stepIndex + 1).padStart(2, "0")}</span>
+        </div>
+        <p class="innovation-step-summary">${step.summary}</p>
+        <p class="innovation-takeaway">
+          <i class="fa-solid fa-check" aria-hidden="true"></i>
+          ${step.takeaway}
+        </p>
+        <button class="innovation-detail-btn open-modal-btn" data-step-index="${stepIndex}">Lihat detail <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+      </article>
+    `;
+  }).join("");
+
+  const modalHtml = karyaInovasiData.sections.map((section, stepIndex) => `
+    <div class="modal-bg hidden" id="modal-${stepIndex}">
+      <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title-${stepIndex}">
+        <button class="modal-close" type="button" aria-label="Tutup">&times;</button>
+        <h2 id="modal-title-${stepIndex}" class="text-xl font-bold mb-2">${steps[stepIndex].title}</h2>
+        <p class="mb-4">${steps[stepIndex].summary}</p>
+        ${section.questions.map((item, questionIndex) => `
+          <div class="${questionIndex ? "border-t border-slate-100 pt-4" : ""}">
+            <h4 class="text-sm font-bold text-slate-800 mb-2">${item.question}</h4>
+            <div class="space-y-3 text-sm text-slate-600 leading-relaxed">
+              ${item.content.map((block) => {
+                if (block.type === "ordered") {
+                  return `<ol class="list-decimal pl-5 space-y-2">${block.items.map(point => `<li>${point}</li>`).join("")}</ol>`;
+                }
+                if (block.type === "highlights") {
+                  return `<div class="space-y-3">${block.items.map(highlight => `<p><strong class="text-slate-800">${highlight.label}:</strong> ${highlight.text}</p>`).join("")}</div>`;
+                }
+                return `<p>${block.text}</p>`;
+              }).join("")}
+            </div>
+          </div>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+
+  mainContent.innerHTML = `
+    <nav class="flex items-center gap-2 text-xs sm:text-sm text-slate-500 mb-6 overflow-x-auto pb-2">
+      <a href="#dashboard" class="hover:text-blue-700 flex items-center gap-1.5 flex-shrink-0 font-medium"><i class="fa-solid fa-house"></i><span>Beranda</span></a>
+      <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+      <span class="text-blue-900 font-bold truncate">Karya Inovasi</span>
+    </nav>
+    <header class="bg-gradient-to-br from-blue-950 via-blue-900 to-indigo-800 text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl mb-8 relative overflow-hidden">
+      <div class="absolute -right-4 -bottom-10 opacity-10 text-8xl sm:text-9xl"><i class="fa-solid fa-lightbulb"></i></div>
+      <div class="relative z-10 max-w-4xl">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-amber-200 text-xs font-bold tracking-wide mb-4"><i class="fa-solid fa-wand-magic-sparkles"></i> Perjalanan sebuah inovasi</span>
+        <h1 class="text-3xl sm:text-4xl font-black tracking-tight mb-3">${karyaInovasiData.title}</h1>
+        <p class="text-sm sm:text-base text-blue-100 leading-relaxed max-w-2xl">KKA Learning Quest mengubah konsep berpikir komputasional yang abstrak menjadi pengalaman belajar lewat game. Ikuti alurnya dari masalah di kelas sampai evaluasi.</p>
+      </div>
+    </header>
+    <section aria-labelledby="innovation-journey-title" class="mb-10">
+      <div class="flex flex-wrap items-end justify-between gap-3 mb-6">
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-700 mb-1">Dari ide menjadi aksi</p>
+          <h2 id="innovation-journey-title" class="text-2xl sm:text-3xl font-black text-slate-900">Alur pengembangan</h2>
+        </div>
+        <p class="text-sm text-slate-500">5 langkah • klik tiap langkah untuk membaca detail</p>
+      </div>
+      <div class="innovation-steps relative grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
+        ${stepHtml}
+      </div>
+    </section>
+    <section aria-labelledby="innovation-apps-title" class="mb-10">
+      <div class="mb-6">
+        <p class="text-xs font-extrabold uppercase tracking-[0.16em] text-blue-700 mb-1">Coba hasil inovasinya</p>
+        <h2 id="innovation-apps-title" class="text-2xl sm:text-3xl font-black text-slate-900">Jelajahi aplikasi</h2>
+        <p class="text-sm text-slate-600 mt-2">Buka aplikasi KKA Learning Quest sebagai murid atau lihat pemantauan pembelajaran melalui dashboard guru.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <a href="https://kka-learning-quest.vercel.app/" target="_blank" rel="noopener noreferrer" class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">
+          <img src="assets/KKA-user.png" alt="Ilustrasi aplikasi KKA Learning Quest untuk murid" class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]">
+          <div class="p-5">
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="text-lg font-extrabold text-slate-900">KKA Learning Quest</h3>
+              <i class="fa-solid fa-arrow-up-right-from-square text-blue-700" aria-hidden="true"></i>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Jelajahi game pembelajaran berpikir komputasional untuk murid.</p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-700">Buka aplikasi <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </div>
+        </a>
+        <a href="https://kka-learning-quest.vercel.app/guru" target="_blank" rel="noopener noreferrer" class="group overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2">
+          <img src="assets/KKA-guru.png" alt="Ilustrasi dashboard guru KKA Learning Quest" class="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]">
+          <div class="p-5">
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="text-lg font-extrabold text-slate-900">Dashboard Guru</h3>
+              <i class="fa-solid fa-arrow-up-right-from-square text-blue-700" aria-hidden="true"></i>
+            </div>
+            <p class="mt-2 text-sm leading-relaxed text-slate-600">Pantau progres belajar, penyelesaian materi, dan aktivitas murid.</p>
+            <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-blue-700">Buka dashboard <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
+          </div>
+        </a>
+      </div>
+    </section>
+    <div class="flex justify-start border-t border-slate-200 pt-6 mt-8">
+      <a href="#dashboard" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-100 text-slate-700 text-sm font-bold hover:bg-slate-200"><i class="fa-solid fa-arrow-left"></i><span>Kembali ke Dashboard</span></a>
+    </div>
+  `;
+
+  const modalRoot = document.getElementById("modal-root");
+  if (modalRoot) modalRoot.innerHTML = modalHtml;
+
+  // Attach modal event listeners
+  attachModalHandlers();
+}
+
+function attachModalHandlers() {
+  document.querySelectorAll('.open-modal-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = btn.dataset.stepIndex;
+      const modal = document.getElementById(`modal-${idx}`);
+      if (modal) {
+        modal.classList.remove('hidden');
+        modal.querySelector('.modal-close')?.focus();
+      }
+    });
+  });
+  document.querySelectorAll('.modal-close').forEach(closeBtn => {
+    closeBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const modal = closeBtn.closest('.modal-bg');
+      if (modal) {
+        modal.classList.add('hidden');
+        document.querySelector(`[data-step-index="${modal.id.replace("modal-", "")}"]`)?.focus();
+      }
+    });
+  });
+  // Close when clicking outside modal content
+  document.querySelectorAll('.modal-bg').forEach(bg => {
+    bg.addEventListener('click', (e) => {
+      if (e.target === bg) bg.classList.add('hidden');
+    });
+  });
+}
+
+
+
+/**
  * RENDER TAMPILAN HALAMAN IDENTIFIKASI DIRI (VISI & MISI)
  */
 function renderIdentifikasiDiri() {
   const mainContent = document.getElementById("main-content");
   if (!mainContent) return;
-
   const data = identifikasiDiriData;
+  const rawMisi = data.misi;
+  const misiItems = Array.isArray(rawMisi)
+    ? rawMisi
+    : (rawMisi?.items || rawMisi?.points || rawMisi?.list || (rawMisi ? [rawMisi] : []));
 
   mainContent.innerHTML = `
     <!-- BREADCRUMB NAVIGATION -->
@@ -753,23 +1104,59 @@ function renderIdentifikasiDiri() {
       </div>
     </div>
 
-    <!-- SECTION VISI GURU PROFESIONAL -->
-    <section class="mb-10">
-      <div class="bg-gradient-to-br from-blue-950 via-[#1e3a8a] to-slate-900 text-white rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl border border-blue-800/80 relative overflow-hidden">
+    <!-- KARTU VISI DAN MISI -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
+      <article class="bg-gradient-to-br from-blue-950 via-[#1e3a8a] to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl border border-blue-800/80 relative overflow-hidden">
         <div class="absolute -top-10 -right-10 w-48 h-48 bg-amber-400/10 rounded-full blur-2xl"></div>
         <div class="relative z-10">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/30 text-xs font-bold uppercase tracking-wider mb-4">
             <i class="fa-solid fa-eye text-amber-400"></i>
             <span>${data.visi.title}</span>
           </div>
-          <blockquote class="text-lg sm:text-xl md:text-2xl font-bold leading-relaxed text-amber-100 mb-4 tracking-tight">
-            ${data.visi.statement}
-          </blockquote>
-          <p class="text-slate-200 text-xs sm:text-sm leading-relaxed max-w-4xl pt-4 border-t border-blue-800/60">
-            ${data.visi.description}
-          </p>
+          <div class="space-y-4">
+            <div class="flex gap-3">
+              <span class="w-8 h-8 flex-shrink-0 rounded-lg bg-amber-400 text-slate-900 text-xs font-extrabold flex items-center justify-center">01</span>
+              <div>
+                <h3 class="font-bold text-amber-200 mb-1">Visi Pendidikan Indonesia</h3>
+                <p class="text-sm sm:text-base font-semibold leading-relaxed text-amber-100">Terwujudnya pendidikan Indonesia yang bermutu, inklusif, berkarakter, dan adaptif terhadap perkembangan ilmu pengetahuan dan teknologi.</p>
+              </div>
+            </div>
+            <div class="flex gap-3 pt-4 border-t border-blue-800/60">
+              <span class="w-8 h-8 flex-shrink-0 rounded-lg bg-amber-400 text-slate-900 text-xs font-extrabold flex items-center justify-center">02</span>
+              <div>
+                <h3 class="font-bold text-amber-200 mb-1">Visi sebagai Calon Guru</h3>
+                <p class="text-sm sm:text-base font-semibold leading-relaxed text-amber-100">Menjadi guru Informatika yang menumbuhkan cara berpikir kritis, kreatif, dan logis dalam lingkungan belajar yang aman, inklusif, dan berpihak pada peserta didik.</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </article>
+
+      <article class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-slate-200/90">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center">
+            <i class="fa-solid fa-bullseye text-lg"></i>
+          </div>
+          <div>
+            <p class="text-[10px] font-bold uppercase tracking-widest text-amber-700">Komitmen Pendidik</p>
+            <h2 class="text-xl font-extrabold text-slate-900">${rawMisi?.title || "Misi"}</h2>
+          </div>
+        </div>
+        <div class="space-y-3">
+          ${misiItems.map((item, index) => {
+            const text = typeof item === "string" ? item : (item.statement || item.description || item.text || item.content || "");
+            const title = typeof item === "object" ? item.title : "";
+            return `
+              <div class="flex gap-3 rounded-2xl bg-slate-50 border border-slate-100 p-4">
+                <span class="w-7 h-7 flex-shrink-0 rounded-lg bg-blue-900 text-white text-xs font-extrabold flex items-center justify-center">${String(index + 1).padStart(2, "0")}</span>
+                <div class="text-sm text-slate-700 leading-relaxed">
+                  ${title ? `<h3 class="font-bold text-slate-900 mb-1">${title}</h3>` : ""}
+                  <p>${text}</p>
+                </div>
+              </div>`;
+          }).join("") || `<p class="text-sm text-slate-500">Belum ada uraian misi.</p>`}
+        </div>
+      </article>
     </section>
 
 
@@ -808,14 +1195,15 @@ function renderIdentifikasiDiri() {
 
       <!-- PDF IFRAME CONTAINER (Responsive 650px - 780px) -->
       <div class="relative w-full bg-slate-100 border-b border-slate-200">
-        <iframe 
+        <iframe
           id="pdf-frame"
-          src="${data.pdfUrl}" 
+          src="${data.pdfUrl}"
           class="w-full h-[650px] lg:h-[780px] border-0"
           title="PDF Viewer - Identifikasi Diri & Visi Misi"
           allow="autoplay"
         ></iframe>
       </div>
+    </section>
 
 
     <!-- BOTTOM NAVIGATION -->

@@ -40,45 +40,380 @@
   </script>
 
   <style>
-    /* Custom Scrollbar */
+    :root {
+      color-scheme: light;
+      scroll-padding-top: 6rem;
+    }
+
+    body {
+      isolation: isolate;
+      overflow-x: clip;
+      background-color: #f5f7ff;
+      background-image:
+        radial-gradient(ellipse at 10% 8%, rgba(191, 219, 254, 0.7), transparent 27rem),
+        radial-gradient(ellipse at 94% 28%, rgba(253, 230, 205, 0.65), transparent 25rem),
+        radial-gradient(ellipse at 16% 78%, rgba(221, 214, 254, 0.58), transparent 30rem),
+        radial-gradient(ellipse at 88% 92%, rgba(204, 251, 241, 0.55), transparent 27rem);
+      background-attachment: fixed;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image: radial-gradient(rgba(30, 58, 138, 0.13) 1px, transparent 1px);
+      background-size: 26px 26px;
+      opacity: 0.42;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    body::after {
+      inset: auto;
+      top: 20%;
+      right: 0;
+      width: 19rem;
+      height: 19rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.2), rgba(244, 114, 182, 0.17));
+      filter: blur(2px);
+    }
+
+    body > header,
+    body > main,
+    body > footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .site-header {
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .site-header.is-scrolled {
+      background: rgba(30, 58, 138, 0.96);
+      border-color: rgba(30, 58, 138, 0.65);
+      box-shadow: 0 12px 30px -18px rgba(15, 23, 42, 0.65);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    #main-content {
+      background: transparent;
+    }
+
+    #main-content [class*="bg-white"][class*="rounded-2xl"],
+    #main-content [class*="bg-white"][class*="rounded-3xl"] {
+      border-color: rgba(203, 213, 225, 0.8);
+      box-shadow: 0 16px 38px -28px rgba(30, 58, 138, 0.42);
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    #main-content [class*="bg-white"][class*="rounded-2xl"]:hover,
+    #main-content [class*="bg-white"][class*="rounded-3xl"]:hover {
+      transform: translateY(-3px);
+      border-color: rgba(147, 197, 253, 0.9);
+      box-shadow: 0 22px 42px -28px rgba(30, 58, 138, 0.48);
+    }
+
+    #main-content section[class*="bg-gradient"] {
+      box-shadow: 0 24px 55px -32px rgba(30, 58, 138, 0.6);
+    }
+
+    .innovation-chevron {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      min-height: 6.5rem;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      color: #1e293b;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      border-radius: 1rem;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .innovation-step:nth-child(5n + 1) .innovation-chevron {
+      background: #dff5ff;
+      color: #075985;
+    }
+
+    .innovation-step:nth-child(5n + 2) .innovation-chevron {
+      background: #ffefdb;
+      color: #9a3412;
+    }
+
+    .innovation-step:nth-child(5n + 3) .innovation-chevron {
+      background: #e7e2ff;
+      color: #5b21b6;
+    }
+
+    .innovation-step:nth-child(5n + 4) .innovation-chevron {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .innovation-step:nth-child(5n) .innovation-chevron {
+      background: #ffe2ed;
+      color: #9d174d;
+    }
+
+    #main-content .innovation-step {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 1rem;
+      border: 1px solid rgba(203, 213, 225, 0.72);
+      border-radius: 1.25rem;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 14px 30px -22px rgba(30, 58, 138, 0.45);
+      z-index: 0;
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    #main-content .innovation-step:hover,
+    #main-content .innovation-step:focus-within {
+      z-index: 30;
+      transform: translateY(-4px);
+      border-color: rgba(147, 197, 253, 0.9);
+      box-shadow: 0 22px 38px -24px rgba(30, 58, 138, 0.4);
+    }
+
+    .innovation-step:hover .innovation-chevron {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px -12px currentColor;
+    }
+
+    .innovation-chevron-icon {
+      display: grid;
+      width: 2.5rem;
+      height: 2.5rem;
+      flex: 0 0 auto;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 0.9rem;
+      background: rgba(255, 255, 255, 0.68);
+      font-size: 0.95rem;
+    }
+
+    .innovation-chevron-copy {
+      display: grid;
+      min-width: 0;
+      gap: 0.25rem;
+    }
+
+    .innovation-chevron-copy strong {
+      font-size: 0.875rem;
+      line-height: 1.2;
+    }
+
+    .innovation-chevron-label {
+      font-size: 0.625rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.72;
+    }
+
+    .innovation-chevron-number {
+      margin-left: auto;
+      align-self: flex-start;
+      font-size: 1.25rem;
+      font-weight: 900;
+      line-height: 1;
+      opacity: 0.45;
+    }
+
+    .innovation-step-summary {
+      flex-grow: 1;
+      margin: 0 0 1rem;
+      color: #475569;
+      font-size: 0.875rem;
+      line-height: 1.65;
+    }
+
+    .innovation-takeaway {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 0.5rem;
+      margin: 0 0 1rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 9999px;
+      background: #f0fdf4;
+      color: #166534;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .innovation-detail-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      align-self: flex-start;
+      gap: 0.5rem;
+      margin-top: auto;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid #bfdbfe;
+      border-radius: 9999px;
+      background: #eff6ff;
+      color: #1d4ed8;
+      font-size: 0.8rem;
+      font-weight: 800;
+      transition: background 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .innovation-detail-btn:hover {
+      transform: translateY(-1px);
+      background: #2563eb;
+      color: white;
+    }
+
+    .innovation-detail-btn:focus-visible {
+      outline: 3px solid rgba(59, 130, 246, 0.45);
+      outline-offset: 3px;
+    }
+
+    @media (min-width: 1280px) {
+      .innovation-chevron {
+        min-height: 8rem;
+        gap: 0.55rem;
+        padding: 0.85rem;
+      }
+
+      .innovation-chevron-copy strong {
+        font-size: 0.8rem;
+      }
+
+      .innovation-chevron-number {
+        font-size: 1.2rem;
+      }
+
+      .innovation-step > p {
+        margin-top: 0;
+      }
+    }
+
+    .inovasi-card {
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      border-radius: 1.25rem;
+      padding: 1.25rem;
+      box-shadow: 0 16px 38px -28px rgba(30, 58, 138, 0.42);
+      transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+    }
+
+    .inovasi-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(147, 197, 253, 0.9);
+      box-shadow: 0 22px 42px -28px rgba(30, 58, 138, 0.48);
+    }
+
     ::-webkit-scrollbar {
       width: 8px;
       height: 8px;
     }
+
     ::-webkit-scrollbar-track {
-      background: #f1f5f9;
+      background: #eef2ff;
     }
+
     ::-webkit-scrollbar-thumb {
-      background: #94a3b8;
-      border-radius: 4px;
+      background: #a5b4fc;
+      border-radius: 9999px;
     }
+
     ::-webkit-scrollbar-thumb:hover {
-      background: #64748b;
+      background: #6366f1;
     }
+
     .line-clamp-3 {
-
-
-
-
-
-
       display: -webkit-box;
       -webkit-line-clamp: 3;
       line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-  </style>
+
+    @media (max-width: 1279px) {
+      #main-content > section:first-child[class~="w-screen"] {
+        width: calc(100% + 2rem);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+   /* Modal and slide-up animation */
+   #modal-root {
+     position: fixed;
+     inset: 0;
+     z-index: 1001;
+     pointer-events: none;
+   }
+   .modal-bg {
+     position: absolute;
+     inset: 0;
+     background: rgba(0, 0, 0, 0.5);
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     overflow-y: auto;
+     padding: 1rem;
+     box-sizing: border-box;
+     pointer-events: auto;
+   }
+   .modal-content {
+     background: white;
+     width: min(90%, 440px);
+     height: min(600px, calc(100vh - 2rem));
+     height: min(600px, calc(100dvh - 2rem));
+     box-sizing: border-box;
+     overflow-y: auto;
+     margin: 0;
+     border-radius: 0.5rem;
+     padding: 1.5rem;
+     animation: slide-up 0.5s ease-out;
+     position: relative;
+   }
+   .modal-close {
+     position: absolute;
+     top: 0.5rem;
+     right: 0.5rem;
+     background: transparent;
+     border: none;
+     font-size: 1.25rem;
+     cursor: pointer;
+   }
+   @keyframes slide-up {
+     from { transform: translateY(100%); opacity: 0; }
+     to { transform: translateY(0); opacity: 1; }
+   }
+   </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-blue-600 selection:text-white flex flex-col min-h-screen">
 
   <!-- ================= HEADER / NAVBAR (FIXED TOP) ================= -->
-  <header class="fixed top-0 left-0 right-0 z-40 bg-[#1e3a8a]/95 backdrop-blur-md text-white border-b border-blue-900/60 shadow-lg shadow-blue-950/10 transition-all duration-300">
+  <header id="site-header" class="site-header fixed top-0 left-0 right-0 z-40 text-white border-b transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         
         <!-- LOGO UKSW & LOGO PPG -->
-        <a href="#dashboard" class="flex items-center gap-3.5 group focus:outline-none">
+        <a href="#dashboard" class="flex items-center gap-2 sm:gap-3.5 group focus:outline-none">
           <div class="flex items-center gap-2">
             <!-- PPG Logo PNG -->
             <div class="w-15 h-12 rounded-xl bg-white p-1 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
@@ -91,13 +426,9 @@
             </div>
           </div>
 
-          <div class="flex flex-col">
-            <span class="text-base sm:text-lg font-extrabold tracking-tight text-white group-hover:text-amber-300 transition-colors flex items-center gap-1.5">
+          <div class="flex min-w-0 flex-col">
+            <span class="text-xs sm:text-lg font-extrabold tracking-tight text-white group-hover:text-amber-300 transition-colors flex items-center gap-1.5">
               <span>E-Portofolio PPG</span>
-              <span class="text-[10px] px-1.5 py-0.5 rounded bg-amber-400/20 text-amber-300 font-bold border border-amber-400/30">Informatika</span>
-            </span>
-            <span class="text-[11px] text-slate-300 font-medium tracking-wide">
-              Seminar Pendidikan Profesi Guru • UKSW
             </span>
           </div>
         </a>
@@ -105,21 +436,18 @@
         <!-- DESKTOP NAVIGATION MENU -->
         <nav class="hidden lg:flex items-center gap-1">
           <!-- Dashboard / Beranda -->
-          <a href="#dashboard" class="nav-dashboard-btn nav-link px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-800/80 hover:text-white text-slate-100 transition-all flex items-center gap-2">
-            <i class="fa-solid fa-house text-xs"></i>
+          <a href="#dashboard" class="nav-dashboard-btn nav-link px-3 py-2 rounded-lg text-sm font-semibold hover:text-white text-white/80 transition-all flex items-center gap-2">
             <span>Dashboard</span>
           </a>
 
           <!-- Identifikasi Diri (Visi & Misi) -->
-          <a href="#identifikasi-diri" data-nav-id="identifikasi-diri" class="nav-identifikasi-btn nav-link px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-800/80 hover:text-white text-slate-100 transition-all flex items-center gap-2">
-            <i class="fa-solid fa-id-card-clip text-xs text-amber-400"></i>
+          <a href="#identifikasi-diri" data-nav-id="identifikasi-diri" class="nav-identifikasi-btn nav-link px-3 py-2 rounded-lg text-sm font-semibold hover:text-white text-white/80 transition-all flex items-center gap-2">
             <span>Identifikasi Diri</span>
           </a>
 
           <!-- Dropdown Refleksi Semester 1 -->
           <div class="relative">
-            <button type="button" class="dropdown-btn px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-800/80 hover:text-white text-slate-100 transition-all flex items-center gap-2 focus:outline-none">
-              <i class="fa-solid fa-folder-open text-xs text-amber-400"></i>
+            <button type="button" class="dropdown-btn px-3 py-2 rounded-lg text-sm font-semibold hover:text-white text-white/80 transition-all flex items-center gap-2 focus:outline-none">
               <span>Refleksi Semester 1</span>
               <i class="fa-solid fa-chevron-down text-[10px] chevron-icon transition-transform duration-200"></i>
             </button>
@@ -184,8 +512,7 @@
 
           <!-- Dropdown Refleksi Semester 2 -->
           <div class="relative">
-            <button type="button" class="dropdown-btn px-3.5 py-2 rounded-xl text-sm font-semibold hover:bg-blue-800/80 hover:text-white text-slate-100 transition-all flex items-center gap-2 focus:outline-none">
-              <i class="fa-solid fa-folder-tree text-xs text-amber-400"></i>
+            <button type="button" class="dropdown-btn px-3 py-2 rounded-lg text-sm font-semibold hover:text-white text-white/80 transition-all flex items-center gap-2 focus:outline-none">
               <span>Refleksi Semester 2</span>
               <i class="fa-solid fa-chevron-down text-[10px] chevron-icon transition-transform duration-200"></i>
             </button>
@@ -247,19 +574,19 @@
               </div>
             </div>
           </div>
-        </nav>
 
-        <!-- HEADER RIGHT ACTIONS -->
-        <div class="hidden sm:flex items-center gap-3">
-          <div class="flex items-center gap-2 bg-blue-950/60 px-3 py-1.5 rounded-xl border border-blue-800 text-xs font-medium text-slate-200">
-            <i class="fa-solid fa-user-graduate text-amber-400"></i>
-            <span>Brilian Herda (95202530N)</span>
-          </div>
-        </div>
+          <a href="#refleksi-ppg" data-nav-id="refleksi-ppg" class="nav-link px-3 py-2 rounded-lg text-sm font-semibold hover:text-white text-white/80 transition-all flex items-center gap-1.5 whitespace-nowrap">
+            <span>Refleksi PPG</span>
+          </a>
+
+          <a href="#karya-inovasi" data-nav-id="karya-inovasi" class="nav-link px-3 py-2 rounded-lg text-sm font-semibold hover:text-white text-white/80 transition-all flex items-center gap-1.5 whitespace-nowrap">
+            <span>Karya Inovasi</span>
+          </a>
+        </nav>
 
         <!-- MOBILE HAMBURGER BUTTON -->
         <div class="flex lg:hidden items-center">
-          <button id="mobile-menu-btn" type="button" aria-label="Buka Menu" class="p-2 rounded-xl text-slate-200 hover:text-white hover:bg-blue-800 focus:outline-none transition-colors">
+          <button id="mobile-menu-btn" type="button" aria-label="Buka Menu" class="p-2 rounded-xl text-white/90 hover:text-white hover:bg-white/10 focus:outline-none transition-colors">
             <i class="fa-solid fa-bars text-xl"></i>
           </button>
         </div>
@@ -343,12 +670,23 @@
           <a href="#mk-ppl-2" class="mobile-nav-link block px-4 py-2 text-xs text-slate-300 hover:text-white">6. PPL II</a>
         </div>
       </div>
+
+      <a href="#refleksi-ppg" data-nav-id="refleksi-ppg" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-800/80 hover:bg-blue-900/60 text-white text-sm font-bold transition-colors">
+        <i class="fa-solid fa-lightbulb text-amber-400 w-5"></i>
+        <span>Refleksi PPG</span>
+      </a>
+
+      <a href="#karya-inovasi" data-nav-id="karya-inovasi" class="mobile-nav-link flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-800/80 hover:bg-blue-900/60 text-white text-sm font-bold transition-colors">
+        <i class="fa-solid fa-lightbulb text-amber-400 w-5"></i>
+        <span>Karya Inovasi</span>
+      </a>
     </div>
   </aside>
 
   <!-- ================= MAIN CONTENT CONTAINER (DYNAMIC) ================= -->
   <main id="main-content" class="flex-grow pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
     <!-- Konten Dinamis Diisi oleh JS (renderDashboard atau renderCourse) -->
+    <section id="karya-inovasi" class="py-8"></section>
   </main>
 
   <!-- ================= FOOTER ================= -->
@@ -406,6 +744,8 @@
       </div>
     </div>
   </footer>
+
+  <div id="modal-root"></div>
 
   <!-- SCRIPT DATA & APLIKASI -->
   <script src="js/data.js"></script>
