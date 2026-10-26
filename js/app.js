@@ -661,6 +661,55 @@ function filterCourses(filter) {
   }
 }
 
+function renderArtifactPreview(artifact) {
+  const title = artifact?.title || "Artefak Pembelajaran";
+  const hasPreview = artifact?.embedUrl && ["video", "document"].includes(artifact.type);
+  const openUrl = artifact?.openUrl || artifact?.embedUrl;
+  const isVideo = artifact?.type === "video";
+
+  return `
+    <section class="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
+      <div class="bg-slate-900 text-white p-4 sm:p-5 flex items-center justify-between gap-3 border-b border-slate-800">
+        <div class="flex items-center gap-3 min-w-0">
+          <div class="w-9 h-9 shrink-0 rounded-lg ${isVideo ? "bg-violet-600" : "bg-blue-600"} text-white flex items-center justify-center text-base">
+            <i class="fa-solid ${isVideo ? "fa-video" : "fa-file-lines"}"></i>
+          </div>
+          <div class="min-w-0">
+            <h3 class="font-bold text-sm sm:text-base leading-tight text-white truncate">${title}</h3>
+            <span class="text-xs text-slate-400">Artefak Pembelajaran</span>
+          </div>
+        </div>
+        ${hasPreview && openUrl ? `
+          <a href="${openUrl}" target="_blank" rel="noopener noreferrer" class="shrink-0 px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Buka</span>
+          </a>
+        ` : ""}
+      </div>
+      ${hasPreview ? `
+        <div class="relative w-full bg-slate-100 ${isVideo ? "aspect-video" : "h-[560px] sm:h-[650px] xl:h-[780px]"}">
+          <iframe
+            src="${artifact.embedUrl}"
+            class="absolute inset-0 w-full h-full border-0"
+            title="Pratinjau artefak - ${title}"
+            loading="lazy"
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+      ` : `
+        <div class="min-h-[320px] xl:min-h-[780px] flex flex-col items-center justify-center bg-slate-50 px-6 py-10 text-center">
+          <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center text-2xl mb-4">
+            <i class="fa-solid fa-photo-film"></i>
+          </div>
+          <h4 class="font-bold text-slate-800 mb-2">Pratinjau artefak belum tersedia</h4>
+          <p class="max-w-sm text-sm text-slate-500 leading-relaxed">Tambahkan jenis artefak (video atau document) dan URL pratinjau pada data mata kuliah untuk menampilkannya di sini.</p>
+        </div>
+      `}
+    </section>
+  `;
+}
+
 /**
  * RENDER TAMPILAN HALAMAN REFLEKSI MATA KULIAH (DYNAMIC VIEW + PDF VIEWER)
  */
@@ -773,49 +822,45 @@ function renderCourse(courseId) {
 
 
 
-    <!-- PDF VIEWER SECTION -->
-    <section id="pdf-viewer-section" class="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden mb-12">
-      <!-- ACTION BAR PDF -->
-      <div class="bg-slate-900 text-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-lg bg-red-600 text-white flex items-center justify-center text-base">
-            <i class="fa-solid fa-file-pdf"></i>
+    <!-- RESPONSIVE REFLECTION PDF AND ARTIFACT PREVIEWS -->
+    <section id="pdf-viewer-section" class="grid grid-cols-1 xl:grid-cols-2 gap-5 xl:gap-6 mb-12 items-start">
+      <div class="bg-white rounded-3xl border border-slate-200/90 shadow-xl overflow-hidden">
+        <div class="bg-slate-900 text-white p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-9 h-9 shrink-0 rounded-lg bg-red-600 text-white flex items-center justify-center text-base">
+              <i class="fa-solid fa-file-pdf"></i>
+            </div>
+            <div class="min-w-0">
+              <h3 class="font-bold text-sm sm:text-base leading-tight text-white">Dokumen Refleksi</h3>
+              <span class="text-xs text-slate-400">${course.title}</span>
+            </div>
           </div>
-          <div>
-            <h3 class="font-bold text-sm sm:text-base leading-tight text-white flex items-center gap-2">
-              <span>Dokumen Refleksi & Artefak: ${course.title}</span>
-            </h3>
-            <span class="text-xs text-slate-400">Pratinjau Dokumen Akademik PPG UKSW</span>
+          <div class="flex flex-wrap items-center gap-2">
+            <button onclick="copyCurrentUrl()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700">
+              <i class="fa-solid fa-link"></i>
+              <span>Salin Link</span>
+            </button>
+            <a href="${course.downloadUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <span>Buka</span>
+            </a>
+            <a href="${course.downloadUrl}" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md transition-all">
+              <i class="fa-solid fa-download"></i>
+              <span>Unduh</span>
+            </a>
           </div>
         </div>
-
-        <!-- Action Controls -->
-        <div class="flex flex-wrap items-center gap-2">
-          <button onclick="copyCurrentUrl()" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700">
-            <i class="fa-solid fa-link"></i>
-            <span>Salin Link</span>
-          </button>
-          <a href="${course.downloadUrl}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            <span>Buka Tab Baru</span>
-          </a>
-          <a href="${course.downloadUrl}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 text-xs font-bold flex items-center gap-1.5 shadow-md transition-all">
-            <i class="fa-solid fa-download"></i>
-            <span>Download PDF</span>
-          </a>
+        <div class="relative w-full h-[560px] sm:h-[650px] xl:h-[780px] bg-slate-100">
+          <iframe
+            id="pdf-frame"
+            src="${course.pdfUrl}"
+            class="absolute inset-0 w-full h-full border-0"
+            title="PDF Refleksi - ${course.title}"
+            loading="lazy"
+          ></iframe>
         </div>
       </div>
-
-      <!-- PDF IFRAME CONTAINER (Responsive 650px - 800px) -->
-      <div class="relative w-full bg-slate-100 border-b border-slate-200">
-        <iframe
-          id="pdf-frame"
-          src="${course.pdfUrl}"
-          class="w-full h-[650px] lg:h-[780px] border-0"
-          title="PDF Viewer - ${course.title}"
-          allow="autoplay"
-        ></iframe>
-      </div>
+      ${renderArtifactPreview(course.artifactPreview)}
     </section>
 
 

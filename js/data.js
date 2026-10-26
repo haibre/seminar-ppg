@@ -12,6 +12,17 @@
  * 2. Jika menggunakan file lokal:
  *    - Simpan file PDF di folder 'assets/pdf/nama_file.pdf'
  *    - Isi properti `pdfUrl: 'assets/pdf/nama_file.pdf'`
+ *
+ * PETUNJUK PRATINJAU ARTEFAK:
+ * Tambahkan properti `artifactPreview` pada data mata kuliah dengan satu objek:
+ * {
+ *   title: "Video Praktik Mengajar",
+ *   type: "video", // atau "document"
+ *   embedUrl: "https://www.youtube.com/embed/VIDEO_ID",
+ *   openUrl: "https://youtu.be/VIDEO_ID" // opsional
+ * }
+ * Untuk Google Docs, gunakan URL `/preview` sebagai `embedUrl`.
+ * Isi properti `artifactPreview` di setiap objek mata kuliah di bawah ini.
  */
 
 const studentProfile = {
@@ -345,8 +356,16 @@ const coursesData = {
     // Default PDF URL (Sample Google Drive Preview / Sample PDF)
     pdfUrl: "https://drive.google.com/file/d/1S1qgpXjdd5hANtFbYDOUVz8GiuyjUKcH/preview",
     downloadUrl: "https://drive.google.com/file/d/1S1qgpXjdd5hANtFbYDOUVz8GiuyjUKcH/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+
+    artifactPreview: {
+      title: "RPP",
+      type: "document",
+      embedUrl: "https://docs.google.com/document/d/18YR3iH-fPQElrn7I1ZKz3ymAQmzys0Np/preview",
+      openUrl: "https://docs.google.com/document/d/18YR3iH-fPQElrn7I1ZKz3ymAQmzys0Np/edit"
+    },
   },
+
 
   "filosofi-pendidikan": {
     id: "filosofi-pendidikan",
@@ -375,7 +394,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1P14f6KsUNZ5Yk2rFIbcfmOv36jPQ9aOZ/preview",
     downloadUrl: "https://drive.google.com/file/d/1P14f6KsUNZ5Yk2rFIbcfmOv36jPQ9aOZ/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Filosofi Pendidikan",
+      type: "document",
+      embedUrl: "https://drive.google.com/file/d/1TdGSz6zLAMnMl2GXmIoVftAcyuGwINzR/preview",
+      openUrl: "https://drive.google.com/file/d/1TdGSz6zLAMnMl2GXmIoVftAcyuGwINzR/view"
+    }
   },
 
   "computational-thinking": {
@@ -405,7 +430,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1sXl68KdRG0kCEvMcEOJDFKi5zAqRrvkx/preview",
     downloadUrl: "https://drive.google.com/file/d/1sXl68KdRG0kCEvMcEOJDFKi5zAqRrvkx/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Computational Thinking",
+      type: "document",
+      embedUrl: "https://drive.google.com/file/d/133lgiU2YohYFqIT-Tgw7RZtok00of508/preview",
+      openUrl: "https://drive.google.com/file/d/133lgiU2YohYFqIT-Tgw7RZtok00of508/view"
+    }
   },
 
   "growth-mindset": {
@@ -435,7 +466,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1rVkBotO9Ruj8KL-ZYyPLJleSbyrUmA3x/preview",
     downloadUrl: "https://drive.google.com/file/d/1rVkBotO9Ruj8KL-ZYyPLJleSbyrUmA3x/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Growth Mindset",
+      type: "document",
+      embedUrl: "https://docs.google.com/document/d/1s3f5qpDQR1guRJraf9bLRlTNc9u60qL-/preview",
+      openUrl: "https://docs.google.com/document/d/1s3f5qpDQR1guRJraf9bLRlTNc9u60qL-/view"
+    }
   },
 
   "ppl-1": {
@@ -465,7 +502,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/13gslq0lirlvGFn7K9l3Lj-vqq-j3mcqA/preview",
     downloadUrl: "https://drive.google.com/file/d/13gslq0lirlvGFn7K9l3Lj-vqq-j3mcqA/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak PPLT",
+      type: "document",
+      embedUrl: "https://docs.google.com/document/d/1z3taLUXkz2IVIk2vVnDdTe3k0MSdFHRB_srVbpUO-YY/preview",
+      openUrl: "https://docs.google.com/document/d/1z3taLUXkz2IVIk2vVnDdTe3k0MSdFHRB_srVbpUO-YY/view"
+    }
   },
 
   "pemahaman-peserta-didik": {
@@ -495,7 +538,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1AWAlzBMlNI6bkWOtb6yt1GwUpxEVtIzw/preview",
     downloadUrl: "https://drive.google.com/file/d/1AWAlzBMlNI6bkWOtb6yt1GwUpxEVtIzw/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Pemahaman Peserta Didik",
+      type: "document",
+      embedUrl: "https://docs.google.com/document/d/1UNN-P0edZZW5PAx_AC3O8Ik2L1jpqfkP/preview",
+      openUrl: "https://docs.google.com/document/d/1UNN-P0edZZW5PAx_AC3O8Ik2L1jpqfkP/view"
+    }
   },
 
   // ================= SEMESTER 2 =================
@@ -526,8 +575,15 @@ const coursesData = {
     
     pdfUrl: "https://docs.google.com/document/d/1zfxEFjfQ6HcOuFpElXS_SSjLpjoxQMw6/preview",
     downloadUrl: "https://drive.google.com/file/d/1SamplePSE_UKSW/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Pembelajaran Sosial Emosional",
+      type: "video",
+      embedUrl: "https://drive.google.com/file/d/1nNuf7XqIcUZkXwyyAYlP_9z3uzCVf3Xi/preview",
+      openUrl: "https://drive.google.com/file/d/1nNuf7XqIcUZkXwyyAYlP_9z3uzCVf3Xi/view"
+    }
   },
+
 
   "pembelajaran-mendalam-asesmen-lanjut": {
     id: "pembelajaran-mendalam-asesmen-lanjut",
@@ -556,7 +612,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1K-CMxUz82tHysczxlWeFe33uI433BfwP/preview",
     downloadUrl: "https://drive.google.com/file/d/1SamplePMALanjut_UKSW/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Pembelajaran Mendalam dan Asesmen Lanjut",
+      type: "document",
+      embedUrl: "https://docs.google.com/document/d/1DIGtp7YHK_rHz4VEOj9h8Ci2BU30QLDV/preview",
+      openUrl: "https://docs.google.com/document/d/1DIGtp7YHK_rHz4VEOj9h8Ci2BU30QLDV/view"
+    }
   },
 
   "project-kepemimpinan": {
@@ -586,7 +648,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1smwCpIjvqhJvMif5StpOqAMp1szEkJrt/preview",
     downloadUrl: "https://drive.google.com/file/d/1SampleProjectKepemimpinan_UKSW/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Project Kepemimpinan",
+      type: "document",
+      embedUrl: "https://docs.google.com/document/d/1rJSz4i2kaTCyk8cL6KquzRx0nNhAmCk6/preview",
+      openUrl: "https://docs.google.com/document/d/1rJSz4i2kaTCyk8cL6KquzRx0nNhAmCk6/view"
+    }
   },
 
   "pembelajaran-daring-bauran": {
@@ -616,7 +684,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1PNSQ8HwVrz4v0AztH5CKLPBn6xHU8wxM/preview",
     downloadUrl: "https://drive.google.com/file/d/1SampleDaringBauran_UKSW/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak Pembelajaran Daring dan Bauran",
+      type: "document",
+      embedUrl: "https://docs.google.com/document/d/1fnMbgNaEjXYiNmPQ3WQshALE4adMS5Lg/preview",
+      openUrl: "https://docs.google.com/document/d/1fnMbgNaEjXYiNmPQ3WQshALE4adMS5Lg/view"
+    }
   },
 
 
@@ -647,7 +721,13 @@ const coursesData = {
     
     pdfUrl: "https://drive.google.com/file/d/1j_XP_y_83Ot8azszaNVcVuAwGaimPp0R/preview",
     downloadUrl: "https://drive.google.com/file/d/1SamplePPL2_UKSW/view?usp=sharing",
-    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+    sampleAlternativeUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf",
+    artifactPreview: {
+      title: "Artefak PPL II",
+      type: "video",
+      embedUrl: "https://drive.google.com/file/d/1-hQ73RUDA6En65cjRP8tpvlHaTEak4AC/preview",
+      openUrl: "https://drive.google.com/file/d/1-hQ73RUDA6En65cjRP8tpvlHaTEak4AC/view"
+    }
   }
 };
 

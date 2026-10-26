@@ -22,9 +22,10 @@
 3. **Dynamic Page View (Single Page Application)**:
    - Perpindahan konten tanpa reload halaman dengan dukungan *URL Hash routing* (`#dashboard`, `#mk-pembelajaran-mendalam-asesmen`, dll.).
    - Tombol browser *Back* & *Forward* tetap berfungsi penuh.
-4. **Embedded PDF Document Viewer**:
-   - Embed iframe dengan rasio tinggi 650px - 780px yang responsif.
-   - Action Bar: Tombol *Download PDF*, *Buka di Tab Baru*, dan *Salin Link*.
+4. **Pratinjau Dokumen Refleksi & Artefak Responsif**:
+   - Pratinjau dokumen refleksi dan satu artefak ditampilkan berdampingan di layar laptop, lalu bertumpuk di tablet dan ponsel.
+   - Artefak mendukung pratinjau video 16:9 atau dokumen; tautan dapat ditambahkan melalui properti `artifactPreview` pada data mata kuliah di `js/data.js`.
+   - Tombol untuk membuka pratinjau artefak di tab baru, serta mengunduh atau membuka dokumen refleksi.
    - Rincian artefak pembelajaran dan analisis refleksi kritis alur MERDEKA & Siklus Gibbs.
 
 ---
