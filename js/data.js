@@ -59,7 +59,7 @@ const identifikasiDiriData = {
     {
       number: "01",
       title: "Berpihak pada murid",
-      description: "mengaitkan Informatika dengan masalah nyata dalam kehidupan sehari-hari.",
+      description: "merancang pembelajaran sesuai kebutuhan dan potensi setiap peserta didik.",
       icon: "fa-chalkboard-user",
       color: "from-blue-600 to-indigo-700",
       badgeColor: "bg-blue-100 text-blue-800"
